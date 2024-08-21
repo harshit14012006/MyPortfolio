@@ -177,7 +177,7 @@ const projects = [
     title: "Static IT Website Layout",
     description:
       "A modern and responsive static website layout designed for an IT company. Built using React and Tailwind CSS with a focus on clean design and smooth user experience.",
-    link: "https://it-website-layout-static.vercel.app/",
+    link: "https://static-it-website-layout.vercel.app/",
     gitLink: "https://github.com/harshit14012006/ItWebsiteLayoutStatic",
     buttonColor: "#28a745",
     technologies: ["React", "Tailwind CSS"],
