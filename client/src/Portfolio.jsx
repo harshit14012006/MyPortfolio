@@ -1,568 +1,358 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "aos/dist/aos.css";
-import AOS from "aos";
-import {
-  FaExternalLinkAlt,
-  FaGithub,
-  FaFileCode,
-  FaLinkedin,
-  FaEnvelope,
-  FaFacebook,
-} from "react-icons/fa";
-import { motion } from "framer-motion";
-import htmllogo from "./images/htmllogo.png";
-import cssImg from "./images/css.png";
-import javascriptImg from "./images/javascript.webp";
-import reactImg from "./images/react.webp";
-import nodejsImg from "./images/nodejs.webp";
-import javaImg from "./images/java.webp";
-import netbeansImg from "./images/netbeans.jpeg";
-import mongodbImg from "./images/mongodb.png";
-import gitImg from "./images/git.webp";
-import githubImg from "./images/github.webp";
-import windowsImg from "./images/windows.webp";
-import vscodeImg from "./images/vscode.webp";
-import cImg from "./images/c.webp";
-import cppImg from "./images/cpp.webp";
-import postmanImg from "./images/postman.png";
-
-const styles = {
-  container: {
-    backgroundColor: "#343a40",
-    color: "#ffffff",
-    padding: "5rem 0",
-    overflowX: "hidden",
-  },
-  heroSection: {
-    backgroundImage: "url(path/to/hero-background.jpg)",
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    color: "#ffffff",
-    padding: "10rem 0",
-    textAlign: "center",
-    fontFamily: "'Roboto', sans-serif",
-  },
-  techList: {
-    listStyleType: "none",
-    padding: "0",
-    margin: "0 0 1rem 0",
-    display: "flex",
-    flexWrap: "wrap",
-    gap: "0.5rem",
-  },
-  techItem: {
-    backgroundColor: "#2a2a2a",
-    color: "#f0f0f0",
-    borderRadius: "0.5rem",
-    padding: "0.25rem 0.75rem",
-    fontSize: "0.875rem",
-  },
-  sectionTitle: {
-    marginBottom: "2rem",
-    fontSize: "2.5rem",
-    fontWeight: "bold",
-    color: "#ffffff",
-  },
-  skillCard: {
-    transition:
-      "transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease",
-    cursor: "pointer",
-    padding: "1rem",
-    textAlign: "center",
-    backgroundColor: "#495057",
-    borderRadius: "0.5rem",
-    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
-    color: "#ffffff",
-    width: "120px",
-    height: "120px",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    margin: "auto",
-  },
-  skillCardHover: {
-    transform: "scale(1.1)",
-    backgroundColor: "#6c757d",
-    boxShadow: "0 6px 12px rgba(0, 0, 0, 0.3)",
-  },
-  skillImage: {
-    width: "60px",
-    height: "60px",
-    borderRadius: "50%",
-    objectFit: "cover",
-  },
-  sectionCard: {
-    backgroundColor: "#495057",
-    color: "#ffffff",
-    borderRadius: "0.5rem",
-    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
-    padding: "2rem",
-    marginBottom: "2rem",
-  },
-  aboutMeSection: {
-    maxWidth: "700px",
-    margin: "auto",
-    padding: "2rem",
-    backgroundColor: "#495057",
-    borderRadius: "0.5rem",
-    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-  },
-  projectSection: {
-    padding: "2rem",
-    maxWidth: "90%",
-    marginLeft: "auto",
-    marginRight: "auto",
-  },
-  cardImage: {
-    height: "200px",
-    objectFit: "cover",
-    borderRadius: "0.5rem",
-  },
-  projectButton: {
-    margin: "0.5rem",
-  },
-  buttonPrimary: {
-    backgroundColor: "#007bff",
-    borderColor: "#007bff",
-  },
-  buttonSecondary: {
-    backgroundColor: "#6c757d",
-    borderColor: "#6c757d",
-  },
-};
-const footerStyles = {
-  container: {
-    backgroundColor: "#212529",
-    color: "#ffffff",
-    padding: "2rem 0",
-    textAlign: "center",
-  },
-  socialIcons: {
-    fontSize: "1.5rem",
-    margin: "0 10px",
-    color: "#ffffff",
-    transition: "color 0.3s",
-  },
-  socialIconsHover: {
-    color: "#17a2b8",
-  },
-  footerText: {
-    margin: "1rem 0",
-  },
-  link: {
-    color: "#ffffff",
-    textDecoration: "none",
-    transition: "color 0.3s",
-  },
-  linkHover: {
-    color: "#17a2b8",
-  },
-};
-
-const projects = [
-  {
-    title: "Real Estate Management System",
-    description:
-      "A comprehensive Real Estate Management System that allows users to list, search, and manage property listings. Built with React, Node.js, Express, and MongoDB.",
-    link: "https://github.com/your-repo/real-estate-management-system",
-    gitLink: "https://github.com/harshit14012006/projectrealestate",
-    buttonColor: "#28a745",
-    technologies: ["React", "Node.js", "Express", "MongoDB"],
-  },
-  {
-    title: "Static IT Website Layout",
-    description:
-      "A modern and responsive static website layout designed for an IT company. Built using React and Tailwind CSS with a focus on clean design and smooth user experience.",
-    link: "https://static-it-website-layout.vercel.app/",
-    gitLink: "https://github.com/harshit14012006/ItWebsiteLayoutStatic",
-    buttonColor: "#28a745",
-    technologies: ["React", "Tailwind CSS"],
-  },
-];
-
+import React, { useState } from "react";
+import tailwindcss from "./images/tailwindcss.png";
 function Portfolio() {
-  useEffect(() => {
-    AOS.init({ duration: 1200 });
-  }, []);
+  // Set darkMode to true by default for dark theme on initial load
+  const [darkMode, setDarkMode] = useState(true);
+
+  const toggleTheme = () => {
+    setDarkMode(!darkMode);
+    document.documentElement.classList.toggle("dark");
+  };
 
   return (
     <div>
-      <Container fluid style={styles.container}>
+      <div className="min-h-screen bg-gray-900 text-white">
         {/* Hero Section */}
-        <Row style={styles.heroSection}>
-          <Col style={{ textAlign: "center" }}>
-            <h1 className="display-4">Harshit Singla</h1>
-            <p className="lead">
-              Web Developer | Frontend & Backend
-              <br />
-              <span style={{ fontSize: "1rem", fontWeight: "lighter" }}>
-                MERN Stack Developer
-              </span>
+        <div
+          className={`relative min-h-screen flex items-center justify-center ${
+            darkMode
+              ? "bg-gradient-to-b from-gray-900 via-gray-800 to-black"
+              : "bg-gradient-to-b from-white via-blue-100 to-teal-200"
+          }`}
+        >
+          {/* Main Content */}
+          <div className="text-center px-4">
+            {/* Name with Animation */}
+            <h1
+              className={`text-5xl md:text-7xl font-extrabold mb-6 ${
+                darkMode ? "text-green-400" : "text-blue-900"
+              }`}
+            >
+              Hi, I'm Harsh
+              <span className="inline-block animate-flip">i</span>t Singla
+            </h1>
+
+            {/* Subtitle */}
+            <p
+              className={`text-xl md:text-2xl max-w-3xl mx-auto ${
+                darkMode ? "text-gray-300" : "text-gray-700"
+              }`}
+            >
+              A passionate{" "}
+              <strong className="animate-fade-in text-blue-500">
+                Web Developer
+              </strong>{" "}
+              with expertise in{" "}
+              <strong className="animate-fade-in text-green-500">
+                MERN Stack
+              </strong>{" "}
+              and{" "}
+              <strong className="animate-fade-in text-purple-500">
+                Data Structures and Algorithms
+              </strong>
+              . I specialize in building dynamic and scalable web applications,
+              delivering seamless user experiences through technologies like
+              React, Node.js, Express, MongoDB, and Tailwind CSS.
             </p>
 
-            {/* Logo and Social Links */}
-            <div
-              style={{
-                marginTop: "20px",
-                display: "flex",
-                justifyContent: "center",
-              }}
-            >
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <a
-                  href="https://github.com/harshit14012006"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    marginRight: "15px",
-                    display: "flex",
-                    alignItems: "center",
-                    textDecoration: "none",
-                    color: "#f5f5f5",
-                  }}
-                >
-                  <FaGithub
-                    size={20}
-                    style={{ marginRight: "5px", color: "#4078c0" }}
-                  />
-                  GitHub
-                </a>
-                <a
-                  href="/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    textDecoration: "none",
-                    color: "#0077b5",
-                  }}
-                >
-                  <FaLinkedin size={20} style={{ marginRight: "5px" }} />
-                  LinkedIn
-                </a>
-              </div>
-            </div>
-          </Col>
-        </Row>
+            {/* Add the styles for animation */}
+            <style>{`
+        @keyframes fadeIn {
+          0% {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
 
-        {/* About Me Section */}
-        <Row className="mb-5" data-aos="fade-up">
-          <Col xs={12} style={styles.aboutMeSection}>
-            <h2 style={styles.sectionTitle}>About Me</h2>
-            <Card
-              className="bg-dark text-light mx-auto"
-              style={styles.sectionCard}
+        .animate-fade-in {
+          animation: fadeIn 1s ease-out forwards;
+          opacity: 0;
+          animation-delay: 0.5s; /* Optional: delay for a staggered effect */
+        }
+
+        .animate-fade-in:nth-child(1) {
+          animation-delay: 0s;
+        }
+        .animate-fade-in:nth-child(2) {
+          animation-delay: 0.3s;
+        }
+        .animate-fade-in:nth-child(3) {
+          animation-delay: 0.6s;
+        }
+      `}</style>
+
+            {/* Add the styles for animation */}
+            <style>{`
+            @keyframes fadeIn {
+            0% {
+            opacity: 0;
+            transform: translateY(20px);
+                               }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 1s ease-out forwards;
+    opacity: 0;
+    animation-delay: 0.5s; /* Optional: delay for a staggered effect */
+  }
+
+  .animate-fade-in:nth-child(1) {
+    animation-delay: 0s;
+  }
+  .animate-fade-in:nth-child(2) {
+    animation-delay: 0.3s;
+  }
+  .animate-fade-in:nth-child(3) {
+    animation-delay: 0.6s;
+  }
+`}</style>
+
+            {/* Call to Action Buttons */}
+            <div className="mt-8 flex justify-center items-center gap-6">
+              {/* Button 1 */}
+              <button
+                style={{ "--clr": "#39FF14" }}
+                className="relative bg-gray-700 text-white px-6 py-3 uppercase font-bold tracking-wider shadow-lg transition-all duration-300 hover:scale-95 hover:text-[var(--clr)]"
+              >
+                <span>Contact Me</span>
+                <i></i>
+              </button>
+              {/* Button 2 */}
+              <button
+                style={{ "--clr": "#FF44CC" }}
+                className="relative bg-gray-700 text-white px-6 py-3 uppercase font-bold tracking-wider shadow-lg transition-all duration-300 hover:scale-95 hover:text-[var(--clr)]"
+              >
+                <span>View Projects</span>
+                <i></i>
+              </button>
+            </div>
+          </div>
+
+          {/* Theme Toggle */}
+          <label className="cursor-pointer absolute top-6 right-6">
+            <input
+              id="theme-toggle"
+              type="checkbox"
+              checked={darkMode}
+              onChange={toggleTheme}
+              className="hidden"
+            />
+            <div
+              className={`p-3 rounded-full transition-all ${
+                darkMode
+                  ? "bg-gray-800 text-yellow-400"
+                  : "bg-yellow-400 text-gray-800"
+              }`}
             >
-              <Card.Body>
-                <Card.Text>
-                  I am a passionate web developer with a strong foundation in
-                  both frontend and backend technologies. My expertise lies in
-                  crafting seamless user experiences, and I am always eager to
-                  learn new tools and techniques to enhance my skills. I believe
-                  in clean, maintainable code and strive to follow best
-                  practices in all my projects. Let's connect and build
-                  something great together!
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
+              {darkMode ? (
+                <i className="fas fa-moon"></i>
+              ) : (
+                <i className="fas fa-sun"></i>
+              )}
+            </div>
+          </label>
+
+          {/* Flip Animation Styles */}
+          <style>
+            {`
+          @keyframes flip {
+            0% {
+              transform: rotateX(0);
+            }
+            50% {
+              transform: rotateX(180deg);
+            }
+            100% {
+              transform: rotateX(360deg);
+            }
+          }
+
+          .animate-flip {
+            animation: flip 2s ease-in-out infinite;
+          }
+
+          button {
+            position: relative;
+            background: #444;
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            border: none;
+            letter-spacing: 0.1rem;
+            font-size: 1rem;
+            padding: 1rem 3rem;
+            transition: 0.2s;
+          }
+
+          button:hover {
+            letter-spacing: 0.2rem;
+            padding: 1.1rem 3.1rem;
+            background: var(--clr);
+            color: var(--clr);
+            animation: box 3s infinite;
+            transform: scale(0.95); /* Decrease the size on hover */
+          }
+
+          button::before {
+            content: "";
+            position: absolute;
+            inset: 2px;
+            background: #272822;
+          }
+
+          button span {
+            position: relative;
+            z-index: 1;
+          }
+
+          button i {
+            position: absolute;
+            inset: 0;
+            display: block;
+          }
+
+          button i::before {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 2px;
+            left: 80%;
+            top: -2px;
+            border: 2px solid var(--clr);
+            background: #272822;
+            transition: 0.2s;
+          }
+
+          button:hover i::before {
+            width: 15px;
+            left: 20%;
+            animation: move 3s infinite;
+          }
+
+          button i::after {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 2px;
+            left: 20%;
+            bottom: -2px;
+            border: 2px solid var(--clr);
+            background: #272822;
+            transition: 0.2s;
+          }
+
+          button:hover i::after {
+            width: 15px;
+            left: 80%;
+            animation: move 3s infinite;
+          }
+
+          @keyframes move {
+            0% {
+              transform: translateX(0);
+            }
+            50% {
+              transform: translateX(5px);
+            }
+            100% {
+              transform: translateX(0);
+            }
+          }
+
+          @keyframes box {
+            0% {
+              box-shadow: #27272c;
+            }
+            50% {
+              box-shadow: 0 0 25px var(--clr);
+            }
+            100% {
+              box-shadow: #27272c;
+            }
+          }
+        `}
+          </style>
+        </div>
 
         {/* Skills Section */}
-        <Row className="mb-5 text-center">
-          <Col>
-            <h2 style={styles.sectionTitle}>Skills</h2>
-            <Row>
-              {[
-                { image: htmllogo, label: "HTML" },
-                { image: cssImg, label: "CSS" },
-                { image: javascriptImg, label: "JavaScript" },
-                { image: reactImg, label: "ReactJS" },
-                { image: nodejsImg, label: "Node.js" },
-                { image: javaImg, label: "Java" },
-                { image: netbeansImg, label: "NetBeans IDE" },
-                { image: mongodbImg, label: "MongoDB" },
-                { image: gitImg, label: "Git" },
-                { image: githubImg, label: "GitHub" },
-                { image: windowsImg, label: "Windows" },
-                { image: vscodeImg, label: "VS Code" },
-                { image: cImg, label: "C" },
-                { image: cppImg, label: "C++" },
-                { image: postmanImg, label: "Postman" },
-              ].map((skill, index) => (
-                <Col
-                  xs={4}
-                  sm={3}
-                  md={2}
-                  lg={2}
-                  className="mb-4 d-flex justify-content-center"
-                  key={index}
-                >
-                  <motion.div
-                    style={styles.skillCard}
-                    whileHover={styles.skillCardHover}
-                    data-aos="zoom-in"
-                    data-aos-delay={index * 100}
-                    className="skill-card"
-                  >
-                    <img
-                      src={skill.image}
-                      alt={skill.label}
-                      style={styles.skillImage}
-                    />
-                    <p className="mt-2">{skill.label}</p>
-                  </motion.div>
-                </Col>
-              ))}
-            </Row>
-          </Col>
-        </Row>
-
-        {/* Projects section */}
-        <Row className="mb-5 text-center" data-aos="fade-up">
-          <Col style={styles.projectSection}>
-            <h2 style={styles.sectionTitle}>Projects</h2>
-            <Row className="text-center">
-              {projects.map((project, index) => (
-                <Col xs={12} md={6} lg={4} className="mb-4" key={index}>
-                  <Card className="bg-dark text-light">
-                    {/* Removed the Card.Img to eliminate the picture */}
-                    <Card.Body>
-                      <Card.Title>{project.title}</Card.Title>
-                      <Card.Text>{project.description}</Card.Text>
-
-                      {/* Technologies List */}
-                      <ul style={styles.techList}>
-                        {project.technologies.map((tech, i) => (
-                          <li key={i} style={styles.techItem}>
-                            {tech}
-                          </li>
-                        ))}
-                      </ul>
-
-                      <Row className="text-center">
-                        <Col>
-                          <Button
-                            variant="primary"
-                            href={project.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="mx-2"
-                            style={{
-                              backgroundColor: project.buttonColor,
-                              borderColor: project.buttonColor,
-                              transition:
-                                "background-color 0.3s, border-color 0.3s",
-                            }}
-                            onMouseEnter={(e) => {
-                              e.currentTarget.style.backgroundColor = "#218838";
-                              e.currentTarget.style.borderColor = "#218838";
-                            }}
-                            onMouseLeave={(e) => {
-                              e.currentTarget.style.backgroundColor =
-                                project.buttonColor;
-                              e.currentTarget.style.borderColor =
-                                project.buttonColor;
-                            }}
-                          >
-                            <FaExternalLinkAlt /> View Project
-                          </Button>
-                          <Button
-                            variant="secondary"
-                            href={project.gitLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="mx-2"
-                            style={{
-                              backgroundColor: "#6c757d",
-                              borderColor: "#6c757d",
-                              transition:
-                                "background-color 0.3s, border-color 0.3s",
-                            }}
-                            onMouseEnter={(e) => {
-                              e.currentTarget.style.backgroundColor = "#5a6268";
-                              e.currentTarget.style.borderColor = "#5a6268";
-                            }}
-                            onMouseLeave={(e) => {
-                              e.currentTarget.style.backgroundColor = "#6c757d";
-                              e.currentTarget.style.borderColor = "#6c757d";
-                            }}
-                          >
-                            <FaGithub /> View Git
-                          </Button>
-                        </Col>
-                      </Row>
-                    </Card.Body>
-                  </Card>
-                </Col>
-              ))}
-            </Row>
-          </Col>
-        </Row>
-
-        {/* Experience Section */}
-        <Row className="mb-58 text-center" data-aos="fade-up">
-          <Col style={styles.projectSection}>
-            <h2 style={styles.sectionTitle}>Experience</h2>
-            <Row className="justify-content-center">
-              {[
-                {
-                  title: "Learning and Development Journey",
-                  company: "Self-Learning Projects",
-                  description:
-                    "Engaged in continuous learning to develop a strong foundation in web development. Created and maintained projects using React and Node.js. Focused on building scalable, efficient, and user-friendly web applications.",
-                  timeSpan: "2023 July - Present",
-                },
-              ].map((experience, index) => (
-                <Col xs={12} md={8} className="mb-4" key={index}>
-                  <Card
-                    className="bg-dark text-light"
-                    style={styles.sectionCard}
-                  >
-                    <Card.Body className="d-flex flex-column flex-md-row align-items-center">
-                      <FaFileCode
-                        size={50}
-                        style={{ marginRight: "1rem", color: "#007bff" }}
-                      />
-                      <div>
-                        <Card.Title
-                          style={{ fontSize: "1.5rem", fontWeight: "bold" }}
-                        >
-                          {experience.title}
-                        </Card.Title>
-                        <Card.Subtitle
-                          className="mb-2"
-                          style={{ color: "#6c757d", fontStyle: "italic" }}
-                        >
-                          {experience.company}
-                        </Card.Subtitle>
-                        <Card.Text
-                          style={{ fontSize: "1rem", marginBottom: "0.5rem" }}
-                        >
-                          {experience.description}
-                        </Card.Text>
-                        <Card.Text>
-                          <small style={{ color: "#adb5bd" }}>
-                            {experience.timeSpan}
-                          </small>
-                        </Card.Text>
-                      </div>
-                    </Card.Body>
-                  </Card>
-                </Col>
-              ))}
-            </Row>
-          </Col>
-        </Row>
-        {/* Contact Section */}
-        <Row className="mb-5 text-center" data-aos="fade-up">
-          <Col>
-            <h2 style={styles.sectionTitle}>Contact</h2>
-            <p>
-              If you are interested in collaborating or just want to say hi,
-              feel free to reach out to me through any of the platforms below.
-            </p>
-            <Button
-              href="mailto:harshitemail2006@gmail.com"
-              style={{
-                backgroundColor: "#28a745",
-                borderColor: "#28a745",
-                transition: "background-color 0.3s, border-color 0.3s",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "#218838";
-                e.currentTarget.style.borderColor = "#218838";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "#28a745";
-                e.currentTarget.style.borderColor = "#28a745";
-              }}
-            >
-              Email Me
-            </Button>
-          </Col>
-        </Row>
-      </Container>
-      <Container fluid style={footerStyles.container}>
-        <Row>
-          <Col>
-            <h5 style={footerStyles.footerText}>Connect with Me</h5>
-            <div>
-              <a
-                href="https://github.com/harshit14012006"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={footerStyles.link}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.color =
-                    footerStyles.socialIconsHover.color)
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.color = footerStyles.socialIcons.color)
-                }
+        <div className="w-full p-12 bg-gray-100">
+          <h2 className="text-center text-3xl font-semibold text-gray-800 mb-10">
+            Web Developer Skills
+          </h2>
+          <ul className="flex flex-wrap justify-center gap-6">
+            {/* Skill 1 */}
+            {[
+              { name: "HTML5", iconClass: "fab fa-html5" },
+              { name: "CSS3", iconClass: "fab fa-css3-alt" },
+              { name: "JavaScript", iconClass: "fab fa-js-square" },
+              { name: "Bootstrap", iconClass: "fab fa-bootstrap" },
+              { name: "Tailwind CSS", iconClass: "fab fa-tailwind" },
+              { name: "Git", iconClass: "fab fa-git" },
+              { name: "C++", iconClass: "fab fa-cuttlefish" }, // FontAwesome doesn't have a C++ icon, using Cuttlefish as an alternative
+              { name: "Java", iconClass: "fab fa-java" },
+              { name: "Node.js", iconClass: "fab fa-node" },
+              { name: "MongoDB", iconClass: "fab fa-database" },
+            ].map((skill, index) => (
+              <li
+                key={index}
+                className="flex items-center justify-center flex-col w-24 h-24 rounded-lg shadow-lg overflow-hidden"
               >
-                <FaGithub style={footerStyles.socialIcons} />
-              </a>
-              <Link
-                to="/"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={footerStyles.link}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.color =
-                    footerStyles.socialIconsHover.color)
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.color = footerStyles.socialIcons.color)
-                }
-              >
-                <FaLinkedin style={footerStyles.socialIcons} />
-              </Link>
-              <a
-                href="mailto:harshitemail2006@gmail.com"
-                style={footerStyles.link}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.color =
-                    footerStyles.socialIconsHover.color)
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.color = footerStyles.socialIcons.color)
-                }
-              >
-                <FaEnvelope style={footerStyles.socialIcons} />
-              </a>
-              <Link
-                to="/"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={footerStyles.link}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.color =
-                    footerStyles.socialIconsHover.color)
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.color = footerStyles.socialIcons.color)
-                }
-              >
-                <FaFacebook style={footerStyles.socialIcons} />
-              </Link>
+                <button className="relative w-full h-full flex items-center justify-center text-red-500 bg-white border border-[#18181a] text-lg font-medium cursor-pointer group transition-all duration-300 hover:scale-105">
+                  {/* Icon for the skill */}
+                  <i
+                    className={`${skill.iconClass} text-3xl group-hover:text-transparent`}
+                  ></i>
+                  {/* Last Text Span */}
+                  <span className="text-yellow-500 block absolute bottom-0 opacity-0 top-[50%] left-[50%] transform translate-y-[225%] translate-x-[-50%] h-[14px] leading-[13px] transition-all duration-500 ease-in-out group-hover:opacity-100 group-hover:translate-x-[-50%] group-hover:translate-y-[-50%]">
+                    {skill.name} Skill
+                  </span>
+                  {/* Button Hover Effect (Black bar) */}
+                  <span className="absolute inset-0 bg-black transform origin-[bottom-center] scale-y-0 group-hover:scale-y-100 group-hover:skew-y-[9.3deg] transition-all duration-600"></span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+        {/* Projects Section */}
+        <section className="py-20 bg-gray-900">
+          <h2 className="text-4xl font-bold text-center mb-12">My Projects</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <div className="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
+              <h3 className="text-2xl font-semibold mb-4">Project 1</h3>
+              <p className="text-sm leading-relaxed">
+                A web application that does something amazing. Built with React
+                and Tailwind CSS.
+              </p>
             </div>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <p style={footerStyles.footerText}>
-              &copy; {new Date().getFullYear()} Harshit Singla. All rights
-              reserved.
-            </p>
-          </Col>
-        </Row>
-      </Container>
+            <div className="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
+              <h3 className="text-2xl font-semibold mb-4">Project 2</h3>
+              <p className="text-sm leading-relaxed">
+                Another cool project that solves real-world problems.
+              </p>
+            </div>
+            <div className="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
+              <h3 className="text-2xl font-semibold mb-4">Project 3</h3>
+              <p className="text-sm leading-relaxed">
+                An innovative solution for efficient workflows.
+              </p>
+            </div>
+          </div>
+        </section>
+        {/* Footer Section */}
+        <footer className="py-6 bg-gray-800 text-center">
+          <p className="text-sm">
+            © {new Date().getFullYear()} My Portfolio. All rights reserved.
+          </p>
+        </footer>
+      </div>
     </div>
   );
 }
