@@ -38,3 +38,247 @@
     transform: rotate(360deg);
   }
 }
+
+
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body and Background */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* Sidebar */
+.w3-sidebar {
+  background-color: #111;
+  color: #fff;
+  position: fixed;
+  height: 100%;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  padding-top: 20px;
+  transition: 0.3s;
+}
+
+.w3-sidebar img {
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.w3-sidebar .w3-bar-item {
+  color: #fff;
+  text-align: center;
+  padding: 16px;
+}
+
+.w3-sidebar .w3-bar-item:hover {
+  background-color: #575757;
+}
+
+.w3-sidebar .w3-bar-item i {
+  font-size: 30px;
+  margin-right: 10px;
+}
+
+/* Navbar */
+.w3-top {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.w3-bar {
+  background-color: #000;
+  color: #fff;
+}
+
+.w3-bar .w3-bar-item {
+  padding: 16px;
+  text-align: center;
+}
+
+.w3-bar .w3-bar-item:hover {
+  background-color: #575757;
+}
+
+/* Header */
+#w3-header {
+  text-align: center;
+  padding: 100px 0;
+  background-color: #111;
+  color: #fff;
+}
+
+#w3-header h1 {
+  font-size: 4rem;
+}
+
+#w3-header p {
+  font-size: 1.5rem;
+}
+
+#w3-header img {
+  border-radius: 10px;
+}
+
+/* About Section */
+#w3-about {
+  padding: 64px;
+  background-color: #fff;
+}
+
+.w3-text-light-grey {
+  color: #b0b0b0 !important;
+}
+
+.w3-padding-64 {
+  padding: 64px !important;
+}
+
+.w3-wide {
+  font-weight: bold;
+}
+
+.w3-half {
+  width: 50%;
+  padding: 16px;
+}
+
+.w3-light-grey {
+  background-color: #f4f4f4 !important;
+}
+
+.w3-text-grey {
+  color: #333 !important;
+}
+
+/* Skills Section */
+.w3-row-padding {
+  margin: 0 -16px;
+}
+
+.w3-margin-bottom {
+  margin-bottom: 32px;
+}
+
+.w3-dark-grey {
+  background-color: #333;
+  color: #fff;
+}
+
+.w3-hover-opacity-off:hover {
+  opacity: 1 !important;
+}
+
+.w3-hover-black:hover {
+  background-color: #333 !important;
+}
+
+/* Pricing Section */
+.w3-ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.w3-padding-16 {
+  padding: 16px;
+}
+
+.w3-light-grey {
+  background-color: #f4f4f4 !important;
+}
+
+.w3-hover-opacity-off:hover {
+  opacity: 1 !important;
+}
+
+/* Testimonials Section */
+.w3-section {
+  padding: 32px 0;
+}
+
+.w3-circle {
+  border-radius: 50%;
+}
+
+.w3-left {
+  float: left;
+}
+
+.w3-text-light-grey {
+  color: #b0b0b0 !important;
+}
+
+/* Portfolio Section */
+.w3-row-padding {
+  margin: 0 -16px;
+}
+
+.w3-padding-64 {
+  padding: 64px !important;
+}
+
+.w3-image {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* Contact Section */
+.w3-container {
+  padding: 32px;
+}
+
+.w3-padding-64 {
+  padding: 64px !important;
+}
+
+.w3-light-grey {
+  background-color: #f4f4f4 !important;
+}
+
+/* Footer */
+footer {
+  background-color: #111;
+  color: #fff;
+  padding: 32px 0;
+  text-align: center;
+}
+
+footer .fa {
+  font-size: 2rem;
+  margin: 0 10px;
+}
+
+footer p {
+  margin-top: 20px;
+  font-size: 1rem;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+  .w3-half {
+    width: 100% !important;
+  }
+
+  .w3-bar .w3-bar-item {
+    padding: 8px;
+  }
+}
