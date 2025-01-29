@@ -12,8 +12,15 @@ import html5 from "./images/html5.png";
 import css from "./images/css.png";
 import javascript from "./images/javascript.png";
 import nodejs from "./images/nodejs.png";
-import canva from './images/canva.png'
+import canva from "./images/canva.png";
+
 const App = () => {
+  const [isNavOpen, setIsNavOpen] = useState(false); // State to toggle navbar visibility
+
+  const toggleNav = () => {
+    setIsNavOpen(!isNavOpen);
+  };
+
   const projects = [
     {
       name: "Portfolio Website",
@@ -47,9 +54,35 @@ const App = () => {
   };
 
   return (
-    <div className=" text-gray-100 font-sans">
-      {/* Sidebar */}
-      <nav className="fixed top-0 left-0 h-full w-20 bg-gray-800 flex flex-col items-center py-8 shadow-lg">
+    <div className="font-sans text-gray-100">
+      {/* Glassmorphism Floating Navbar */}
+      <nav className="fixed z-50 px-6 py-3 transform -translate-x-1/2 rounded-full shadow-lg bottom-4 left-1/2 bg-white/10 backdrop-blur-lg md:hidden">
+        <ul className="flex gap-6 text-white">
+          {[
+            { href: "#home", icon: "fa-home", label: "Home" },
+            { href: "#skills", icon: "fa-cogs", label: "Skills" },
+            { href: "#projects", icon: "fa-briefcase", label: "Projects" },
+            { href: "#contact", icon: "fa-envelope", label: "Contact" },
+          ].map((item, index) => (
+            <li key={index} className="text-center">
+              <a
+                href={item.href}
+                className="flex flex-col items-center text-xs transition duration-300 hover:text-indigo-400"
+              >
+                <i className={`fa ${item.icon} text-2xl`}></i>
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      {/* Sidebar for Desktop and Mobile Navbar */}
+      <nav
+        className={`fixed top-0 left-0 h-full w-64 bg-gray-800 flex flex-col items-center py-8 shadow-lg transform transition-transform duration-300 ease-in-out ${
+          isNavOpen ? "translate-x-0" : "-translate-x-full"
+        } md:translate-x-0 md:w-20 z-40`}
+      >
         {[
           { href: "#home", icon: "fa-home", label: "HOME" },
           { href: "#skills", icon: "fa-cogs", label: "SKILLS" },
@@ -59,7 +92,8 @@ const App = () => {
           <a
             key={index}
             href={item.href}
-            className="text-center mb-6 w-full hover:bg-gray-700 rounded-md p-2 transition"
+            className="w-full p-2 mb-6 text-center transition rounded-md hover:bg-gray-700"
+            onClick={() => setIsNavOpen(false)} // Close navbar on link click
           >
             <i
               className={`fa ${item.icon} text-xl mb-1`}
@@ -71,22 +105,22 @@ const App = () => {
       </nav>
 
       {/* Main Content */}
-      <div className="ml-20">
+      <div className="md:ml-20">
         {/* HOME Section */}
         <header
           id="home"
-          className="flex flex-col items-center text-center py-16 px-6 bg-gradient-to-b from-gray-900 to-gray-800"
+          className="flex flex-col items-center px-6 py-16 text-center bg-gradient-to-b from-gray-900 to-gray-800"
         >
           <div className="max-w-4xl">
-            <h1 className="text-5xl md:text-7xl font-extrabold text-white leading-tight">
+            <h1 className="text-5xl font-extrabold leading-tight text-white md:text-7xl">
               Hello, I'm <span className="text-indigo-400">Harshit Singla</span>
               .
             </h1>
-            <p className="text-lg md:text-xl mt-6 font-light text-gray-300">
+            <p className="mt-6 text-lg font-light text-gray-300 md:text-xl">
               Passionate about crafting visually stunning and user-friendly web
               applications.
             </p>
-            <p className="text-md md:text-lg mt-4 text-gray-400">
+            <p className="mt-4 text-gray-400 text-md md:text-lg">
               Combining creativity with functionality to deliver impactful
               solutions for real-world challenges.
             </p>
@@ -95,13 +129,13 @@ const App = () => {
           <div className="flex justify-center gap-6 mt-8">
             <a
               href="#projects"
-              className="px-6 py-3 bg-indigo-600 text-white rounded-full  shadow-md hover:bg-indigo-500 transition-all"
+              className="px-6 py-3 text-white transition-all bg-indigo-600 rounded-full shadow-md hover:bg-indigo-500"
             >
               View Projects
             </a>
             <a
               href="#contact"
-              className="px-6 py-3 border border-indigo-600 text-indigo-600 rounded-full shadow-md hover:bg-indigo-600 hover:text-white transition-all"
+              className="px-6 py-3 text-indigo-600 transition-all border border-indigo-600 rounded-full shadow-md hover:bg-indigo-600 hover:text-white"
             >
               Contact Me
             </a>
@@ -114,7 +148,7 @@ const App = () => {
               rel="noopener noreferrer"
               className="hover:text-indigo-300"
             >
-              <i className="fab fa-github text-2xl"></i>
+              <i className="text-2xl fab fa-github"></i>
             </a>
             <a
               href="https://linkedin.com/in/yourusername"
@@ -122,7 +156,7 @@ const App = () => {
               rel="noopener noreferrer"
               className="hover:text-indigo-300"
             >
-              <i className="fab fa-linkedin text-2xl"></i>
+              <i className="text-2xl fab fa-linkedin"></i>
             </a>
             <a
               href="https://twitter.com/yourusername"
@@ -130,7 +164,7 @@ const App = () => {
               rel="noopener noreferrer"
               className="hover:text-indigo-300"
             >
-              <i className="fab fa-twitter text-2xl"></i>
+              <i className="text-2xl fab fa-twitter"></i>
             </a>
           </div>
 
@@ -149,13 +183,13 @@ const App = () => {
         {/* SKILLS Section */}
         <section
           id="skills"
-          className="px-8 py-16 bg-gradient-to-b from-gray-800 to-black text-center"
+          className="px-8 py-16 text-center bg-gradient-to-b from-gray-800 to-black"
         >
           <h2 className="text-4xl font-bold text-indigo-400">Skills</h2>
-          <p className="text-gray-400 mt-4 text-lg">
+          <p className="mt-4 text-lg text-gray-400">
             A showcase of my technical expertise and tools.
           </p>
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 gap-12 mx-auto mt-12 md:grid-cols-2 lg:grid-cols-4 max-w-7xl">
             {/* Skill Card Template */}
             {[
               {
@@ -180,7 +214,7 @@ const App = () => {
                   { img: netbeans, name: "NetBeans" },
                   { img: github, name: "GitHub" },
                   { img: mongodb, name: "MongoDB" },
-                  { img: canva, name: "Canva" }, // Added Canva
+                  { img: canva, name: "Canva" },
                 ],
               },
               {
@@ -194,7 +228,7 @@ const App = () => {
               },
             ].map((skillCategory, index) => (
               <div key={index} className="p-6 bg-gray-900 rounded-lg shadow-md">
-                <h3 className="text-2xl font-semibold text-white mb-6">
+                <h3 className="mb-6 text-2xl font-semibold text-white">
                   {skillCategory.title}
                 </h3>
                 <div className="flex flex-wrap justify-center gap-6">
@@ -206,9 +240,9 @@ const App = () => {
                       <img
                         src={item.img}
                         alt={`${item.name}.png`}
-                        className="h-12 w-12 object-contain mb-3"
+                        className="object-contain w-12 h-12 mb-3"
                       />
-                      <p className="text-md font-medium text-gray-300">
+                      <p className="font-medium text-gray-300 text-md">
                         {item.name}
                       </p>
                     </div>
@@ -220,25 +254,27 @@ const App = () => {
         </section>
 
         {/* PROJECTS Section */}
-        <section id="projects" class="px-6 py-20 bg-gray-900">
-          <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl font-bold text-white mb-8">My Projects</h2>
-            <div class="bg-gray-800 flex flex-col md:flex-row items-center rounded-lg shadow-lg overflow-hidden">
+        <section id="projects" className="px-6 py-20 bg-gray-900">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="mb-8 text-3xl font-bold text-white">My Projects</h2>
+            <div className="flex flex-col items-center overflow-hidden bg-gray-800 rounded-lg shadow-lg md:flex-row">
               <img
                 src="https://via.placeholder.com/300x200"
                 alt="Project Thumbnail"
-                class="w-full md:w-1/3"
+                className="w-full md:w-1/3"
               />
-              <div class="p-6 flex flex-col justify-between">
-                <h3 class="text-xl font-semibold text-white">Project Title</h3>
-                <p class="text-gray-400 mt-2">
+              <div className="flex flex-col justify-between p-6">
+                <h3 className="text-xl font-semibold text-white">
+                  Project Title
+                </h3>
+                <p className="mt-2 text-gray-400">
                   Brief description of the project goes here. Highlight the main
                   features and what makes this project unique.
                 </p>
-                <div class="mt-4">
+                <div className="mt-4">
                   <a
                     href="#"
-                    class="text-sm font-medium text-indigo-500 hover:underline"
+                    className="text-sm font-medium text-indigo-500 hover:underline"
                   >
                     View Project
                   </a>
@@ -249,12 +285,12 @@ const App = () => {
         </section>
 
         {/* CONTACT Section */}
-        <section id="contact" className="px-8 py-16 bg-gray-800 text-center">
+        <section id="contact" className="px-8 py-16 text-center bg-gray-800">
           <h2 className="text-4xl font-semibold text-indigo-400">Contact Me</h2>
           <form
             action="#"
             method="POST"
-            className="mt-8 max-w-md mx-auto space-y-4"
+            className="max-w-md mx-auto mt-8 space-y-4"
           >
             {[
               { placeholder: "Name", type: "text" },
@@ -266,7 +302,7 @@ const App = () => {
                 <textarea
                   key={index}
                   placeholder={placeholder}
-                  className="w-full px-4 py-2 bg-gray-700 text-white rounded-lg"
+                  className="w-full px-4 py-2 text-white bg-gray-700 rounded-lg"
                   rows={5}
                   required
                 />
@@ -275,14 +311,14 @@ const App = () => {
                   key={index}
                   type={type}
                   placeholder={placeholder}
-                  className="w-full px-4 py-2 bg-gray-700 text-white rounded-lg"
+                  className="w-full px-4 py-2 text-white bg-gray-700 rounded-lg"
                   required
                 />
               )
             )}
             <button
               type="submit"
-              className="px-6 py-3 bg-indigo-600 text-white rounded-lg shadow hover:bg-indigo-500"
+              className="px-6 py-3 text-white bg-indigo-600 rounded-lg shadow hover:bg-indigo-500"
             >
               Submit
             </button>
