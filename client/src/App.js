@@ -13,6 +13,7 @@ import css from "./images/css.png";
 import javascript from "./images/javascript.png";
 import nodejs from "./images/nodejs.png";
 import canva from "./images/canva.png";
+import Draggable from "react-draggable";
 
 const App = () => {
   const [isNavOpen, setIsNavOpen] = useState(false); // State to toggle navbar visibility
