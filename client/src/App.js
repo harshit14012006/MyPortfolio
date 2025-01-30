@@ -109,77 +109,84 @@ const App = () => {
       <div className="md:ml-20">
         {/* HOME Section */}
         <header
-          id="home"
-          className="flex flex-col items-center px-6 py-16 text-center bg-gradient-to-b from-gray-900 to-gray-800"
-        >
-          <div className="max-w-4xl">
-            <h1 className="text-5xl font-extrabold leading-tight text-white md:text-7xl">
-              Hello, I'm <span className="text-indigo-400">Harshit Singla</span>
-              .
-            </h1>
-            <p className="mt-6 text-lg font-light text-gray-300 md:text-xl">
-              Passionate about crafting visually stunning and user-friendly web
-              applications.
-            </p>
-            <p className="mt-4 text-gray-400 text-md md:text-lg">
-              Combining creativity with functionality to deliver impactful
-              solutions for real-world challenges.
-            </p>
-          </div>
+  id="home"
+  className="flex flex-col items-center justify-center min-h-screen px-6 py-20 text-center bg-gradient-to-b from-gray-900 to-gray-800"
+>
+  <div className="max-w-4xl space-y-6">
+    <h1 className="text-5xl font-bold text-white md:text-6xl lg:text-7xl">
+      Hello, I'm <span className="text-indigo-400">Harshit Singla</span>.
+    </h1>
+    <p className="text-xl font-light text-gray-300 md:text-2xl">
+      MERN Stack Developer & Digital Marketing Designer
+    </p>
+    <p className="text-lg text-gray-400 md:text-xl">
+      Crafting visually stunning web applications and impactful marketing designs to create seamless digital experiences.
+    </p>
+  </div>
 
-          <div className="flex justify-center gap-6 mt-8">
-            <a
-              href="#projects"
-              className="px-6 py-3 text-white transition-all bg-indigo-600 rounded-full shadow-md hover:bg-indigo-500"
-            >
-              View Projects
-            </a>
-            <a
-              href="#contact"
-              className="px-6 py-3 text-indigo-600 transition-all border border-indigo-600 rounded-full shadow-md hover:bg-indigo-600 hover:text-white"
-            >
-              Contact Me
-            </a>
-          </div>
+  <div className="flex justify-center gap-6 mt-12">
+    <a
+      href="#projects"
+      className="px-8 py-3 text-sm font-semibold text-white transition duration-300 ease-in-out bg-indigo-600 rounded-full shadow-lg hover:bg-indigo-500"
+    >
+      View Projects
+    </a>
+    <a
+      href="#contact"
+      className="px-8 py-3 text-sm font-semibold text-indigo-600 transition duration-300 ease-in-out border border-indigo-600 rounded-full shadow-lg hover:bg-indigo-600 hover:text-white"
+    >
+      Contact Me
+    </a>
+  </div>
 
-          <div className="flex justify-center gap-6 mt-10 text-indigo-400">
-            <a
-              href="https://github.com/yourusername"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-indigo-300"
-            >
-              <i className="text-2xl fab fa-github"></i>
-            </a>
-            <a
-              href="https://linkedin.com/in/yourusername"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-indigo-300"
-            >
-              <i className="text-2xl fab fa-linkedin"></i>
-            </a>
-            <a
-              href="https://twitter.com/yourusername"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-indigo-300"
-            >
-              <i className="text-2xl fab fa-twitter"></i>
-            </a>
-          </div>
+  <div className="flex justify-center gap-6 mt-12 text-indigo-400">
+    <a
+      href="https://github.com/yourusername"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="transition duration-300 ease-in-out hover:text-indigo-300"
+    >
+      <i className="text-2xl fab fa-github"></i>
+    </a>
+    <a
+      href="https://www.linkedin.com/in/harshit-singla-b91a6233a/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="transition duration-300 ease-in-out hover:text-indigo-300"
+    >
+      <i className="text-2xl fab fa-linkedin"></i>
+    </a>
+    <a
+      href="https://twitter.com/yourusername"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="transition duration-300 ease-in-out hover:text-indigo-300"
+    >
+      <i className="text-2xl fab fa-twitter"></i>
+    </a>
+  </div>
 
-          <div className="flex flex-wrap justify-center gap-8 mt-12">
-            <div className="text-center">
-              <p className="text-4xl font-bold text-indigo-400">3</p>
-              <p className="text-sm text-gray-400">Projects Completed</p>
-            </div>
-            <div className="text-center">
-              <p className="text-4xl font-bold text-indigo-400">5+</p>
-              <p className="text-sm text-gray-400">Years of Experience</p>
-            </div>
-          </div>
-        </header>
+  <div className="grid grid-cols-2 gap-8 mt-16 md:grid-cols-4">
+    <div className="text-center">
+      <p className="text-4xl font-bold text-indigo-400">3</p>
+      <p className="text-sm text-gray-400">Projects Completed</p>
+    </div>
+    <div className="text-center">
+      <p className="text-4xl font-bold text-indigo-400">5+</p>
+      <p className="text-sm text-gray-400">Years of Experience</p>
+    </div>
+    <div className="text-center">
+      <p className="text-4xl font-bold text-indigo-400">10+</p>
+      <p className="text-sm text-gray-400">Happy Clients</p>
+    </div>
+    <div className="text-center">
+      <p className="text-4xl font-bold text-indigo-400">100%</p>
+      <p className="text-sm text-gray-400">Satisfaction</p>
+    </div>
+  </div>
+</header>
+
+
 
         {/* SKILLS Section */}
         <section
