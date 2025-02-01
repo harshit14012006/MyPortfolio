@@ -13,14 +13,10 @@ import css from "./images/css.png";
 import javascript from "./images/javascript.png";
 import nodejs from "./images/nodejs.png";
 import canva from "./images/canva.png";
-import Draggable from "react-draggable";
-
+import slack from './images/slack.png';
+import wrike from './images/wrike.png'
 const App = () => {
   const [isNavOpen, setIsNavOpen] = useState(false); // State to toggle navbar visibility
-
-  const toggleNav = () => {
-    setIsNavOpen(!isNavOpen);
-  };
 
   const projects = [
     {
@@ -109,84 +105,84 @@ const App = () => {
       <div className="md:ml-20">
         {/* HOME Section */}
         <header
-  id="home"
-  className="flex flex-col items-center justify-center min-h-screen px-6 py-20 text-center bg-gradient-to-b from-gray-900 to-gray-800"
->
-  <div className="max-w-4xl space-y-6">
-    <h1 className="text-5xl font-bold text-white md:text-6xl lg:text-7xl">
-      Hello, I'm <span className="text-indigo-400">Harshit Singla</span>.
-    </h1>
-    <p className="text-xl font-light text-gray-300 md:text-2xl">
-      MERN Stack Developer & Digital Marketing Designer
-    </p>
-    <p className="text-lg text-gray-400 md:text-xl">
-      Crafting visually stunning web applications and impactful marketing designs to create seamless digital experiences.
-    </p>
-  </div>
+          id="home"
+          className="flex flex-col items-center justify-center min-h-screen px-6 py-20 text-center bg-gradient-to-b from-gray-900 to-gray-800"
+        >
+          <div className="max-w-4xl space-y-6">
+            <h1 className="text-5xl font-bold text-white md:text-6xl lg:text-7xl">
+              Hello, I'm <span className="text-indigo-400">Harshit Singla</span>
+              .
+            </h1>
+            <p className="text-xl font-light text-gray-300 md:text-2xl">
+              MERN Stack Developer & Digital Marketing Designer
+            </p>
+            <p className="text-lg text-gray-400 md:text-xl">
+              Crafting visually stunning web applications and impactful
+              marketing designs to create seamless digital experiences.
+            </p>
+          </div>
 
-  <div className="flex justify-center gap-6 mt-12">
-    <a
-      href="#projects"
-      className="px-8 py-3 text-sm font-semibold text-white transition duration-300 ease-in-out bg-indigo-600 rounded-full shadow-lg hover:bg-indigo-500"
-    >
-      View Projects
-    </a>
-    <a
-      href="#contact"
-      className="px-8 py-3 text-sm font-semibold text-indigo-600 transition duration-300 ease-in-out border border-indigo-600 rounded-full shadow-lg hover:bg-indigo-600 hover:text-white"
-    >
-      Contact Me
-    </a>
-  </div>
+          <div className="flex justify-center gap-6 mt-12">
+            <a
+              href="#projects"
+              className="px-8 py-3 text-sm font-semibold text-white transition duration-300 ease-in-out bg-indigo-600 rounded-full shadow-lg hover:bg-indigo-500"
+            >
+              View Projects
+            </a>
+            <a
+              href="#contact"
+              className="px-8 py-3 text-sm font-semibold text-indigo-600 transition duration-300 ease-in-out border border-indigo-600 rounded-full shadow-lg hover:bg-indigo-600 hover:text-white"
+            >
+              Contact Me
+            </a>
+          </div>
 
-  <div className="flex justify-center gap-6 mt-12 text-indigo-400">
-    <a
-      href="https://github.com/yourusername"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="transition duration-300 ease-in-out hover:text-indigo-300"
-    >
-      <i className="text-2xl fab fa-github"></i>
-    </a>
-    <a
-      href="https://www.linkedin.com/in/harshit-singla-b91a6233a/"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="transition duration-300 ease-in-out hover:text-indigo-300"
-    >
-      <i className="text-2xl fab fa-linkedin"></i>
-    </a>
-    <a
-      href="https://twitter.com/yourusername"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="transition duration-300 ease-in-out hover:text-indigo-300"
-    >
-      <i className="text-2xl fab fa-twitter"></i>
-    </a>
-  </div>
+          <div className="flex justify-center gap-6 mt-12 text-indigo-400">
+            <a
+              href="https://github.com/yourusername"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition duration-300 ease-in-out hover:text-indigo-300"
+            >
+              <i className="text-2xl fab fa-github"></i>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/harshit-singla-b91a6233a/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition duration-300 ease-in-out hover:text-indigo-300"
+            >
+              <i className="text-2xl fab fa-linkedin"></i>
+            </a>
+            <a
+              href="https://twitter.com/yourusername"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition duration-300 ease-in-out hover:text-indigo-300"
+            >
+              <i className="text-2xl fab fa-twitter"></i>
+            </a>
+          </div>
 
-  <div className="grid grid-cols-2 gap-8 mt-16 md:grid-cols-4">
-    <div className="text-center">
-      <p className="text-4xl font-bold text-indigo-400">3</p>
-      <p className="text-sm text-gray-400">Projects Completed</p>
-    </div>
-    <div className="text-center">
-      <p className="text-4xl font-bold text-indigo-400">5+</p>
-      <p className="text-sm text-gray-400">Years of Experience</p>
-    </div>
-    <div className="text-center">
-      <p className="text-4xl font-bold text-indigo-400">10+</p>
-      <p className="text-sm text-gray-400">Happy Clients</p>
-    </div>
-    <div className="text-center">
-      <p className="text-4xl font-bold text-indigo-400">100%</p>
-      <p className="text-sm text-gray-400">Satisfaction</p>
-    </div>
-  </div>
-</header>
-
-
+          <div className="grid grid-cols-2 gap-8 mt-16 md:grid-cols-4">
+            <div className="text-center">
+              <p className="text-4xl font-bold text-indigo-400">3</p>
+              <p className="text-sm text-gray-400">Projects Completed</p>
+            </div>
+            <div className="text-center">
+              <p className="text-4xl font-bold text-indigo-400">5+</p>
+              <p className="text-sm text-gray-400">Years of Experience</p>
+            </div>
+            <div className="text-center">
+              <p className="text-4xl font-bold text-indigo-400">10+</p>
+              <p className="text-sm text-gray-400">Happy Clients</p>
+            </div>
+            <div className="text-center">
+              <p className="text-4xl font-bold text-indigo-400">100%</p>
+              <p className="text-sm text-gray-400">Satisfaction</p>
+            </div>
+          </div>
+        </header>
 
         {/* SKILLS Section */}
         <section
@@ -214,6 +210,7 @@ const App = () => {
                   { img: reactjs, name: "ReactJS" },
                   { img: tailwindcss, name: "Tailwind CSS" },
                   { img: bootstrap, name: "Bootstrap" },
+                  { img: wrike, name: "Wrike" }, // Added Wrike here
                 ],
               },
               {
@@ -223,6 +220,7 @@ const App = () => {
                   { img: github, name: "GitHub" },
                   { img: mongodb, name: "MongoDB" },
                   { img: canva, name: "Canva" },
+                  { img: slack, name: "Slack" }, // Added Slack here
                 ],
               },
               {
@@ -290,47 +288,6 @@ const App = () => {
               </div>
             </div>
           </div>
-        </section>
-
-        {/* CONTACT Section */}
-        <section id="contact" className="px-8 py-16 text-center bg-gray-800">
-          <h2 className="text-4xl font-semibold text-indigo-400">Contact Me</h2>
-          <form
-            action="#"
-            method="POST"
-            className="max-w-md mx-auto mt-8 space-y-4"
-          >
-            {[
-              { placeholder: "Name", type: "text" },
-              { placeholder: "Email", type: "email" },
-              { placeholder: "Subject", type: "text" },
-              { placeholder: "Message", type: "textarea" },
-            ].map(({ placeholder, type }, index) =>
-              type === "textarea" ? (
-                <textarea
-                  key={index}
-                  placeholder={placeholder}
-                  className="w-full px-4 py-2 text-white bg-gray-700 rounded-lg"
-                  rows={5}
-                  required
-                />
-              ) : (
-                <input
-                  key={index}
-                  type={type}
-                  placeholder={placeholder}
-                  className="w-full px-4 py-2 text-white bg-gray-700 rounded-lg"
-                  required
-                />
-              )
-            )}
-            <button
-              type="submit"
-              className="px-6 py-3 text-white bg-indigo-600 rounded-lg shadow hover:bg-indigo-500"
-            >
-              Submit
-            </button>
-          </form>
         </section>
       </div>
     </div>
