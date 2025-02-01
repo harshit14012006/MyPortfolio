@@ -13,8 +13,10 @@ import css from "./images/css.png";
 import javascript from "./images/javascript.png";
 import nodejs from "./images/nodejs.png";
 import canva from "./images/canva.png";
-import slack from './images/slack.png';
-import wrike from './images/wrike.png'
+import slack from "./images/slack.png";
+import wrike from "./images/wrike.png";
+
+
 const App = () => {
   const [isNavOpen, setIsNavOpen] = useState(false); // State to toggle navbar visibility
 
@@ -37,18 +39,6 @@ const App = () => {
       img: "blog.jpg",
     },
   ];
-
-  const [scrollAmount, setScrollAmount] = useState(0);
-  const cardWidth = 320; // Width of each card + margin
-  const cardCount = 5; // Total number of cards in the carousel (you can adjust this)
-
-  const handlePrevClick = () => {
-    setScrollAmount((prevScroll) => prevScroll - cardWidth);
-  };
-
-  const handleNextClick = () => {
-    setScrollAmount((prevScroll) => prevScroll + cardWidth);
-  };
 
   return (
     <div className="font-sans text-gray-100">
@@ -117,8 +107,11 @@ const App = () => {
               MERN Stack Developer & Digital Marketing Designer
             </p>
             <p className="text-lg text-gray-400 md:text-xl">
-              Crafting visually stunning web applications and impactful
-              marketing designs to create seamless digital experiences.
+              Merging technology and creativity to develop seamless web
+              experiences and effective marketing strategies. Passionate about
+              building scalable, user-centric applications while crafting
+              compelling digital campaigns that drive engagement, growth, and
+              brand visibility.
             </p>
           </div>
 
@@ -139,7 +132,7 @@ const App = () => {
 
           <div className="flex justify-center gap-6 mt-12 text-indigo-400">
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/harshit14012006"
               target="_blank"
               rel="noopener noreferrer"
               className="transition duration-300 ease-in-out hover:text-indigo-300"
@@ -260,35 +253,40 @@ const App = () => {
         </section>
 
         {/* PROJECTS Section */}
-        <section id="projects" className="px-6 py-20 bg-gray-900">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="mb-8 text-3xl font-bold text-white">My Projects</h2>
-            <div className="flex flex-col items-center overflow-hidden bg-gray-800 rounded-lg shadow-lg md:flex-row">
-              <img
-                src="https://via.placeholder.com/300x200"
-                alt="Project Thumbnail"
-                className="w-full md:w-1/3"
-              />
-              <div className="flex flex-col justify-between p-6">
-                <h3 className="text-xl font-semibold text-white">
-                  Project Title
-                </h3>
-                <p className="mt-2 text-gray-400">
-                  Brief description of the project goes here. Highlight the main
-                  features and what makes this project unique.
-                </p>
-                <div className="mt-4">
-                  <a
-                    href="#"
-                    className="text-sm font-medium text-indigo-500 hover:underline"
-                  >
-                    View Project
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <section id="projects" className="px-6 py-20 bg-gradient-to-b from-black to-gray-900">
+  <div className="max-w-6xl mx-auto">
+    <h2 className="mb-8 text-3xl font-bold text-center text-white">My Projects</h2>
+
+    <div className="flex flex-col items-center overflow-hidden bg-gray-800 rounded-lg shadow-lg md:flex-row h-[250px]">
+      {/* Left Side - Image */}
+      <div className="w-full h-full md:w-1/3">
+        <img
+          src="https://via.placeholder.com/400x300"
+          alt="Project Thumbnail"
+          className="object-cover w-full h-full transition-transform duration-300 hover:scale-105"
+        />
+      </div>
+
+      {/* Right Side - Content */}
+      <div className="flex flex-col justify-between h-full p-8">
+        <h3 className="text-2xl font-semibold text-white">Project Title</h3>
+        <p className="mt-3 text-gray-400">
+          Brief description of the project goes here. Highlight the main
+          features and what makes this project unique.
+        </p>
+        <div className="mt-4">
+          <a
+            href="#"
+            className="inline-block px-4 py-2 text-sm font-medium text-white transition bg-indigo-500 rounded-lg shadow-md hover:bg-indigo-600"
+          >
+            View Project
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
       </div>
     </div>
   );
