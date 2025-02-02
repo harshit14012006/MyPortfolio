@@ -21,33 +21,36 @@ import javascript from "./images/javascript.png";
 import nodejs from "./images/nodejs.png";
 import canva from "./images/canva.png";
 import { Swiper, SwiperSlide } from "swiper/react";
-import {EffectFade } from "swiper/modules";
+import { EffectFade } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
-
+import realEstateImage from "./images/realestateimg.png";
+import shrisatyaitimg from "./images/shrisatyaitimg.png";
 const App = () => {
   const [isNavOpen, setIsNavOpen] = useState(false); // State to toggle navbar visibility
   const swiperRef = useRef(null);
-  const [hoveredlive, setHoveredlive] = useState(false);
-  const [hoveredsourcecode, setHoveredSourceCode] = useState(false);
+  const [hoveredLive, setHoveredLive] = useState(false);
+  const [hoveredSourceCode, setHoveredSourceCode] = useState(false);
   const projects = [
     {
-      title: "Project 1",
-      description: "Description of Project 1",
-      image: "path/to/image.jpg",
-      liveLink: "https://live-link.com",
-      sourceCode: "https://github.com/project1",
-      skills: ["React", "Node.js", "Tailwind CSS", "Express.js"], // Skills Used
+      title: "Real Estate Catalog",
+      description:
+        "Designed a web application to showcase property listings with detailed information and search filters, providing a user-friendly and responsive interface for easy property discovery.",
+      image: realEstateImage,
+      liveLink: "realestatenetlify.netlify.app",
+      sourceCode: "https://github.com/harshit14012006/projectrealestate",
+      skills: ["React", "Node.js", "Tailwind CSS", "Express.js", "MongoDB"], // Skills Used
     },
     {
-      title: "Project 2",
-      description: "Description of Project 2",
-      image: "path/to/image2.jpg",
-      liveLink: "https://live-link2.com",
-      sourceCode: "https://github.com/project2",
-      skills: ["JavaScript", "HTML", "CSS", "Bootstrap"], // Skills Used
+      title: "Shri Satya IT Solutions",
+      description:
+        "Created an elegant portfolio website to showcase technology solutions and services, aimed at capturing client interest and leaving a lasting impression.",
+      image: shrisatyaitimg,
+      liveLink: "https://shrisatyait.com/",
+      sourceCode: "https://github.com/harshit14012006/ItWebsiteLayoutStatic",
+      skills: ["React", "Tailwind CSS"], // Skills Used
     },
     // More projects...
   ];
@@ -265,7 +268,7 @@ const App = () => {
           className="px-6 py-20 bg-gradient-to-b from-gray-900 to-gray-800"
         >
           <div className="max-w-6xl mx-auto">
-            <h2 className="mb-8 text-3xl font-bold text-center text-white">
+            <h2 className="mb-10 text-4xl font-bold text-center text-indigo-400">
               My Projects
             </h2>
 
@@ -282,35 +285,29 @@ const App = () => {
             >
               {projects.map((project, index) => (
                 <SwiperSlide key={index}>
-                  <div className="flex flex-col items-center overflow-hidden bg-gray-800 rounded-lg shadow-xl transform transition-transform duration-300 md:flex-row h-auto sm:h-[500px] md:h-[450px]">
-                    {/* Left Side - Image */}
-                    <div className="relative w-full h-56 sm:h-64 md:w-1/3">
-                      <img
-                        src={project.image}
-                        alt="Project Thumbnail"
-                        className="object-cover w-full h-full transition-transform duration-500 transform rounded-lg hover:scale-105 "
-                      />
-                    </div>
-
-                    {/* Right Side - Content */}
-                    <div className="flex flex-col justify-between h-full p-6 space-y-4 sm:p-8 md:w-2/3">
-                      <h3 className="text-xl font-semibold text-white sm:text-2xl text-shadow-sm">
+                  <div className="flex flex-col items-center overflow-hidden rounded-lg shadow-xl transform transition-transform duration-300 md:flex-row h-auto sm:h-[500px] md:h-[350px]">
+                    {/* Left Side - Content */}
+                    <div className="flex flex-col justify-between h-full p-6 mr-10 space-y-6 bg-gray-800 rounded-xl sm:p-8 md:w-2/3">
+                      {/* Project Title */}
+                      <h3 className="text-2xl font-bold text-white sm:text-3xl">
                         {project.title}
                       </h3>
-                      <p className="mt-3 text-sm text-gray-400 sm:text-base">
+
+                      {/* Description */}
+                      <p className="text-sm leading-relaxed text-gray-300 sm:text-base">
                         {project.description}
                       </p>
 
                       {/* Skills Used Section */}
-                      <div className="mt-4">
-                        <h4 className="text-lg font-semibold text-white">
+                      <div>
+                        <h4 className="text-lg font-semibold text-indigo-400">
                           Skills Used:
                         </h4>
-                        <div className="flex flex-wrap gap-2 mt-2">
+                        <div className="flex flex-wrap gap-2 mt-3">
                           {project.skills.map((skill, index) => (
                             <span
                               key={index}
-                              className="px-4 py-2 text-sm font-semibold text-gray-800 bg-gray-300 rounded-full"
+                              className="px-4 py-2 text-sm font-semibold text-gray-800 bg-gray-300 rounded-lg"
                             >
                               {skill}
                             </span>
@@ -318,44 +315,34 @@ const App = () => {
                         </div>
                       </div>
 
-                      {/* Buttons */}
+                      {/* Buttons Section */}
                       <div className="flex flex-col mt-auto space-y-4 sm:flex-row sm:items-center sm:gap-4 sm:space-y-0">
-                        {/* Live Project Button */}
+                        {/* View Live Button */}
                         <a
                           href={project.liveLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          onMouseEnter={() => setHoveredlive(true)}
-                          onMouseLeave={() => setHoveredlive(false)}
-                          className="flex items-center gap-3 py-2 text-base font-bold text-white transition duration-300 ease-in-out sm:w-auto"
+                          onMouseEnter={() => setHoveredLive(true)}
+                          onMouseLeave={() => setHoveredLive(false)}
+                          className="relative flex items-center gap-3 px-6 py-2 text-base font-bold text-white transition duration-300 ease-in-out "
                         >
-                          {/* Left Icon */}
-                          <span
+                          <Eye
+                            size={20}
                             className={`transition-all duration-300 ${
-                              hoveredlive
+                              hoveredLive
                                 ? "opacity-100 -translate-x-1"
                                 : "opacity-0 translate-x-2"
                             }`}
-                          >
-                            <Eye size={20} />
-                          </span>
+                          />
                           View Live
-                          {/* Right Icon */}
-                          <span
+                          <ExternalLink
+                            size={20}
                             className={`transition-all duration-300 ${
-                              hoveredlive
+                              hoveredLive
                                 ? "opacity-0 translate-x-2"
                                 : "opacity-100 -translate-x-1"
                             }`}
-                          >
-                            <ExternalLink size={20} />
-                          </span>
-                          {/* Glow Effect */}
-                          <span
-                            className={`absolute inset-0 bg-gray-400/30 dark:bg-gray-800/40 blur-xl transition-all duration-300 ${
-                              hoveredlive ? "scale-100" : "scale-0"
-                            }`}
-                          ></span>
+                          />
                         </a>
 
                         {/* Source Code Button */}
@@ -365,37 +352,36 @@ const App = () => {
                           rel="noopener noreferrer"
                           onMouseEnter={() => setHoveredSourceCode(true)}
                           onMouseLeave={() => setHoveredSourceCode(false)}
-                          className="relative flex items-center gap-3 px-6 py-2 text-base font-bold text-white transition duration-300 ease-in-out sm:w-auto"
+                          className="relative flex items-center gap-3 px-6 py-2 text-base font-bold text-white transition duration-300 ease-in-out "
                         >
-                          {/* Left Icon */}
-                          <span
+                          <Code
+                            size={20}
                             className={`transition-all duration-300 ${
-                              hoveredsourcecode
+                              hoveredSourceCode
                                 ? "opacity-100 -translate-x-1"
                                 : "opacity-0 translate-x-2"
                             }`}
-                          >
-                            <Code size={20} />
-                          </span>
+                          />
                           View Source Code
-                          {/* Right Icon */}
-                          <span
+                          <ExternalLink
+                            size={20}
                             className={`transition-all duration-300 ${
-                              hoveredsourcecode
+                              hoveredSourceCode
                                 ? "opacity-0 translate-x-2"
                                 : "opacity-100 -translate-x-1"
                             }`}
-                          >
-                            <ExternalLink size={20} />
-                          </span>
-                          {/* Glow Effect */}
-                          <span
-                            className={`absolute inset-0 bg-gray-400/30 dark:bg-gray-800/40 blur-xl transition-all duration-300 ${
-                              hoveredsourcecode ? "scale-100" : "scale-0"
-                            }`}
-                          ></span>
+                          />
                         </a>
                       </div>
+                    </div>
+
+                    {/* Right - Image */}
+                    <div className="relative w-full h-56 sm:h-64 md:w-1/3 md:h-full">
+                      <img
+                        src={project.image}
+                        alt="Project Thumbnail"
+                        className="object-cover w-full h-full transition-transform duration-500 transform rounded-lg hover:scale-105"
+                      />
                     </div>
                   </div>
                 </SwiperSlide>
@@ -403,7 +389,7 @@ const App = () => {
             </Swiper>
 
             {/* Navigation Arrows */}
-            <div className="flex justify-center mt-6 space-x-4">
+            <div className="flex justify-center mt-8 space-x-4">
               <button
                 onClick={() => swiperRef.current.swiper.slidePrev()}
                 className="p-4 text-white transition-all duration-500 bg-gray-700 rounded-full shadow-md hover:bg-gray-600"
