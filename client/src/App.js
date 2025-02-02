@@ -1,5 +1,11 @@
 import React, { useState, useRef } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Eye,
+  ExternalLink,
+  Code,
+} from "lucide-react";
 import clang from "./images/clang.png";
 import cpluslang from "./images/cpluslang.png";
 import java from "./images/java.png";
@@ -20,51 +26,31 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
-import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 
 const App = () => {
   const [isNavOpen, setIsNavOpen] = useState(false); // State to toggle navbar visibility
   const swiperRef = useRef(null);
-  const [hovered, setHovered] = useState(false);
-
+  const [hoveredlive, setHoveredlive] = useState(false);
+  const [hoveredsourcecode, setHoveredSourceCode] = useState(false);
   const projects = [
     {
-      title: "Real Estate Website",
-      liveLink: "https://your-realestate-demo.com",
-      sourceCode: "https://github.com/yourusername/realestate-project",
-      description: "A modern real estate platform to browse and list properties with advanced filtering options.",
-      image: "/images/realestate.png",
+      title: "Project 1",
+      description: "Description of Project 1",
+      image: "path/to/image.jpg",
+      liveLink: "https://live-link.com",
+      sourceCode: "https://github.com/project1",
+      skills: ["React", "Node.js", "Tailwind CSS", "Express.js"], // Skills Used
     },
     {
-      title: "E-Commerce Store",
-      liveLink: "https://your-ecommerce-demo.com",
-      sourceCode: "https://github.com/yourusername/ecommerce-project",
-      description: "A fully functional e-commerce store with product listings, cart, and payment integration.",
-      image: "/images/ecommerce.png",
+      title: "Project 2",
+      description: "Description of Project 2",
+      image: "path/to/image2.jpg",
+      liveLink: "https://live-link2.com",
+      sourceCode: "https://github.com/project2",
+      skills: ["JavaScript", "HTML", "CSS", "Bootstrap"], // Skills Used
     },
-    {
-      title: "Portfolio Website",
-      liveLink: "https://your-portfolio-demo.com",
-      sourceCode: "https://github.com/yourusername/portfolio-project",
-      description: "A personal portfolio showcasing projects, skills, and contact information.",
-      image: "/images/portfolio.png",
-    },
-    {
-      title: "Hospital Management System",
-      liveLink: "https://your-hospital-demo.com",
-      sourceCode: "https://github.com/yourusername/hospital-management",
-      description: "A MERN stack hospital management system for patient records and appointments.",
-      image: "/images/hospital.png",
-    },
-    {
-      title: "Stock Market Tracker",
-      liveLink: "https://your-stockmarket-demo.com",
-      sourceCode: "https://github.com/yourusername/stock-market-tracker",
-      description: "A stock market tracker that provides real-time stock prices and historical trends.",
-      image: "/images/stockmarket.png",
-    },
+    // More projects...
   ];
-  
 
   return (
     <div className="font-sans text-gray-100">
@@ -203,7 +189,7 @@ const App = () => {
         {/* SKILLS Section */}
         <section
           id="skills"
-          className="px-8 py-16 text-center bg-gradient-to-b from-gray-800 to-black"
+          className="px-8 py-16 text-center bg-gradient-to-b from-gray-800 to-gray-900"
         >
           <h2 className="text-4xl font-bold text-indigo-400">Skills</h2>
           <p className="mt-4 text-lg text-gray-400">
@@ -276,7 +262,7 @@ const App = () => {
         {/* PROJECTS Section */}
         <section
           id="projects"
-          className="px-6 py-20 bg-gradient-to-b from-black to-gray-900 "
+          className="px-6 py-20 bg-gradient-to-b from-gray-900 to-gray-800"
         >
           <div className="max-w-6xl mx-auto">
             <h2 className="mb-8 text-3xl font-bold text-center text-white">
@@ -286,7 +272,7 @@ const App = () => {
             {/* Swiper Carousel */}
             <Swiper
               ref={swiperRef}
-              modules={[Autoplay, EffectFade]}
+              modules={[EffectFade]}
               spaceBetween={30}
               slidesPerView={1}
               autoplay={{ delay: 3500, disableOnInteraction: false }}
@@ -296,42 +282,118 @@ const App = () => {
             >
               {projects.map((project, index) => (
                 <SwiperSlide key={index}>
-                  <div className="flex flex-col items-center overflow-hidden bg-gray-800 rounded-lg shadow-xl transform transition-transform duration-300 hover:scale-100 md:flex-row h-[350px]">
+                  <div className="flex flex-col items-center overflow-hidden bg-gray-800 rounded-lg shadow-xl transform transition-transform duration-300 md:flex-row h-auto sm:h-[500px] md:h-[450px]">
                     {/* Left Side - Image */}
-                    <div className="relative w-full h-full md:w-1/3">
+                    <div className="relative w-full h-56 sm:h-64 md:w-1/3">
                       <img
                         src={project.image}
                         alt="Project Thumbnail"
-                        className="object-cover w-full h-full transition-transform duration-500 transform rounded-lg hover:scale-105"
+                        className="object-cover w-full h-full transition-transform duration-500 transform rounded-lg hover:scale-105 "
                       />
                     </div>
 
                     {/* Right Side - Content */}
-                    <div className="flex flex-col justify-between h-full p-8 space-y-4 md:w-2/3">
-                      <h3 className="text-2xl font-semibold text-white text-shadow-sm">
+                    <div className="flex flex-col justify-between h-full p-6 space-y-4 sm:p-8 md:w-2/3">
+                      <h3 className="text-xl font-semibold text-white sm:text-2xl text-shadow-sm">
                         {project.title}
                       </h3>
-                      <p className="mt-3 text-sm text-gray-400">
+                      <p className="mt-3 text-sm text-gray-400 sm:text-base">
                         {project.description}
                       </p>
 
+                      {/* Skills Used Section */}
+                      <div className="mt-4">
+                        <h4 className="text-lg font-semibold text-white">
+                          Skills Used:
+                        </h4>
+                        <div className="flex flex-wrap gap-2 mt-2">
+                          {project.skills.map((skill, index) => (
+                            <span
+                              key={index}
+                              className="px-4 py-2 text-sm font-semibold text-gray-800 bg-gray-300 rounded-full"
+                            >
+                              {skill}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
                       {/* Buttons */}
-                      <div className="flex items-center gap-4 mt-auto">
+                      <div className="flex flex-col mt-auto space-y-4 sm:flex-row sm:items-center sm:gap-4 sm:space-y-0">
+                        {/* Live Project Button */}
                         <a
                           href={project.liveLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-block px-5 py-3 text-sm font-medium text-white transition transform bg-indigo-600 rounded-lg shadow-md hover:bg-indigo-700 hover:scale-105"
+                          onMouseEnter={() => setHoveredlive(true)}
+                          onMouseLeave={() => setHoveredlive(false)}
+                          className="flex items-center gap-3 py-2 text-base font-bold text-white transition duration-300 ease-in-out sm:w-auto"
                         >
+                          {/* Left Icon */}
+                          <span
+                            className={`transition-all duration-300 ${
+                              hoveredlive
+                                ? "opacity-100 -translate-x-1"
+                                : "opacity-0 translate-x-2"
+                            }`}
+                          >
+                            <Eye size={20} />
+                          </span>
                           View Live
+                          {/* Right Icon */}
+                          <span
+                            className={`transition-all duration-300 ${
+                              hoveredlive
+                                ? "opacity-0 translate-x-2"
+                                : "opacity-100 -translate-x-1"
+                            }`}
+                          >
+                            <ExternalLink size={20} />
+                          </span>
+                          {/* Glow Effect */}
+                          <span
+                            className={`absolute inset-0 bg-gray-400/30 dark:bg-gray-800/40 blur-xl transition-all duration-300 ${
+                              hoveredlive ? "scale-100" : "scale-0"
+                            }`}
+                          ></span>
                         </a>
+
+                        {/* Source Code Button */}
                         <a
                           href={project.sourceCode}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-block px-5 py-3 text-sm font-medium text-white transition transform bg-gray-700 rounded-lg shadow-md hover:bg-gray-800 hover:scale-105"
+                          onMouseEnter={() => setHoveredSourceCode(true)}
+                          onMouseLeave={() => setHoveredSourceCode(false)}
+                          className="relative flex items-center gap-3 px-6 py-2 text-base font-bold text-white transition duration-300 ease-in-out sm:w-auto"
                         >
+                          {/* Left Icon */}
+                          <span
+                            className={`transition-all duration-300 ${
+                              hoveredsourcecode
+                                ? "opacity-100 -translate-x-1"
+                                : "opacity-0 translate-x-2"
+                            }`}
+                          >
+                            <Code size={20} />
+                          </span>
                           View Source Code
+                          {/* Right Icon */}
+                          <span
+                            className={`transition-all duration-300 ${
+                              hoveredsourcecode
+                                ? "opacity-0 translate-x-2"
+                                : "opacity-100 -translate-x-1"
+                            }`}
+                          >
+                            <ExternalLink size={20} />
+                          </span>
+                          {/* Glow Effect */}
+                          <span
+                            className={`absolute inset-0 bg-gray-400/30 dark:bg-gray-800/40 blur-xl transition-all duration-300 ${
+                              hoveredsourcecode ? "scale-100" : "scale-0"
+                            }`}
+                          ></span>
                         </a>
                       </div>
                     </div>
@@ -344,60 +406,19 @@ const App = () => {
             <div className="flex justify-center mt-6 space-x-4">
               <button
                 onClick={() => swiperRef.current.swiper.slidePrev()}
-                className="p-3 text-white transition-all duration-500 bg-gray-800 rounded-full shadow-md hover:bg-gray-700"
+                className="p-4 text-white transition-all duration-500 bg-gray-700 rounded-full shadow-md hover:bg-gray-600"
               >
                 <ChevronLeft size={24} />
               </button>
               <button
                 onClick={() => swiperRef.current.swiper.slideNext()}
-                className="p-3 text-white transition-all duration-500 bg-gray-800 rounded-full shadow-md hover:bg-gray-700"
+                className="p-4 text-white transition-all duration-500 bg-gray-700 rounded-full shadow-md hover:bg-gray-600"
               >
                 <ChevronRight size={24} />
               </button>
             </div>
           </div>
         </section>
-        <button
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      className={`relative px-6 py-3 font-bold text-lg transition-all duration-300 
-        border-4 border-gray-500 dark:border-gray-700 rounded-lg 
-        bg-white dark:bg-black text-black dark:text-white 
-        shadow-md hover:border-gray-700 dark:hover:border-gray-500`}
-    >
-      <span
-        className={`flex items-center transition-all duration-300 gap-3 ${
-          hovered ? "pl-6 pr-2" : "pr-6 pl-2"
-        }`}
-      >
-        {/* Left Icon */}
-        <span
-          className={`transition-all duration-300 ${
-            hovered ? "opacity-100 -translate-x-1" : "opacity-0 translate-x-2"
-          }`}
-        >
-          <FaArrowLeft size={20} />
-        </span>
-
-        Click Me
-
-        {/* Right Icon */}
-        <span
-          className={`transition-all duration-300 ${
-            hovered ? "opacity-0 translate-x-2" : "opacity-100 -translate-x-1"
-          }`}
-        >
-          <FaArrowRight size={20} />
-        </span>
-      </span>
-
-      {/* Glow Effect */}
-      <span
-        className={`absolute inset-0 bg-gray-400/30 dark:bg-gray-800/40 blur-xl transition-all duration-300 ${
-          hovered ? "scale-100" : "scale-0"
-        }`}
-      ></span>
-    </button>
       </div>
     </div>
   );
