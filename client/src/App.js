@@ -274,119 +274,120 @@ const App = () => {
 
             {/* Swiper Carousel */}
             <Swiper
-              ref={swiperRef}
-              modules={[EffectFade]}
-              spaceBetween={30}
-              slidesPerView={1}
-              autoplay={{ delay: 3500, disableOnInteraction: false }}
-              effect="fade"
-              speed={800}
-              className="w-full transition-all duration-700 ease-in-out"
-            >
-              {projects.map((project, index) => (
-                <SwiperSlide key={index}>
-                  <div className="flex flex-col items-center overflow-hidden rounded-lg shadow-xl transform transition-transform duration-300 md:flex-row h-auto sm:h-[500px] md:h-[350px]">
-                    {/* Left Side - Content */}
-                    <div className="flex flex-col justify-between h-full p-6 mr-10 space-y-6 bg-gray-800 rounded-xl sm:p-8 md:w-2/3">
-                      {/* Project Title */}
-                      <h3 className="text-2xl font-bold text-white sm:text-3xl">
-                        {project.title}
-                      </h3>
+  ref={swiperRef}
+  modules={[EffectFade]}
+  spaceBetween={30}
+  slidesPerView={1}
+  autoplay={{ delay: 3500, disableOnInteraction: false }}
+  effect="fade"
+  speed={800}
+  className="w-full transition-all duration-700 ease-in-out"
+>
+  {projects.map((project, index) => (
+    <SwiperSlide key={index} className="relative swiper-slide">
+      <div className="flex flex-col items-center overflow-hidden rounded-lg shadow-xl transform transition-transform duration-300 md:flex-row h-auto sm:h-[500px] md:h-[350px]">
+        {/* Left Side - Content */}
+        <div className="flex flex-col justify-between h-full p-6 mr-10 space-y-6 bg-gray-800 rounded-xl sm:p-8 sm:w-full md:w-2/3">
+          {/* Project Title */}
+          <h3 className="text-2xl font-bold text-white sm:text-3xl">
+            {project.title}
+          </h3>
 
-                      {/* Description */}
-                      <p className="text-sm leading-relaxed text-gray-300 sm:text-base">
-                        {project.description}
-                      </p>
+          {/* Description */}
+          <p className="text-sm leading-relaxed text-gray-300 sm:text-base">
+            {project.description}
+          </p>
 
-                      {/* Skills Used Section */}
-                      <div>
-                        <h4 className="text-lg font-semibold text-indigo-400">
-                          Skills Used:
-                        </h4>
-                        <div className="flex flex-wrap gap-2 mt-3">
-                          {project.skills.map((skill, index) => (
-                            <span
-                              key={index}
-                              className="px-4 py-2 text-sm font-semibold text-gray-800 bg-gray-300 rounded-lg"
-                            >
-                              {skill}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Buttons Section */}
-                      <div className="flex flex-col mt-auto space-y-4 sm:flex-row sm:items-center sm:gap-4 sm:space-y-0">
-                        {/* View Live Button */}
-                        <a
-                          href={project.liveLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onMouseEnter={() => setHoveredLive(true)}
-                          onMouseLeave={() => setHoveredLive(false)}
-                          className="relative flex items-center gap-3 px-6 py-2 text-base font-bold text-white transition duration-300 ease-in-out "
-                        >
-                          <Eye
-                            size={20}
-                            className={`transition-all duration-300 ${
-                              hoveredLive
-                                ? "opacity-100 -translate-x-1"
-                                : "opacity-0 translate-x-2"
-                            }`}
-                          />
-                          View Live
-                          <ExternalLink
-                            size={20}
-                            className={`transition-all duration-300 ${
-                              hoveredLive
-                                ? "opacity-0 translate-x-2"
-                                : "opacity-100 -translate-x-1"
-                            }`}
-                          />
-                        </a>
-
-                        {/* Source Code Button */}
-                        <a
-                          href={project.sourceCode}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onMouseEnter={() => setHoveredSourceCode(true)}
-                          onMouseLeave={() => setHoveredSourceCode(false)}
-                          className="relative flex items-center gap-3 px-6 py-2 text-base font-bold text-white transition duration-300 ease-in-out "
-                        >
-                          <Code
-                            size={20}
-                            className={`transition-all duration-300 ${
-                              hoveredSourceCode
-                                ? "opacity-100 -translate-x-1"
-                                : "opacity-0 translate-x-2"
-                            }`}
-                          />
-                          View Source Code
-                          <ExternalLink
-                            size={20}
-                            className={`transition-all duration-300 ${
-                              hoveredSourceCode
-                                ? "opacity-0 translate-x-2"
-                                : "opacity-100 -translate-x-1"
-                            }`}
-                          />
-                        </a>
-                      </div>
-                    </div>
-
-                    {/* Right - Image */}
-                    <div className="relative w-full h-56 sm:h-64 md:w-1/3 md:h-full">
-                      <img
-                        src={project.image}
-                        alt="Project Thumbnail"
-                        className="object-cover w-full h-full transition-transform duration-500 transform rounded-lg hover:scale-105"
-                      />
-                    </div>
-                  </div>
-                </SwiperSlide>
+          {/* Skills Used Section */}
+          <div>
+            <h4 className="text-lg font-semibold text-indigo-400">
+              Skills Used:
+            </h4>
+            <div className="flex flex-wrap gap-2 mt-3">
+              {project.skills.map((skill, index) => (
+                <span
+                  key={index}
+                  className="px-4 py-2 text-sm font-semibold text-gray-800 bg-gray-300 rounded-lg"
+                >
+                  {skill}
+                </span>
               ))}
-            </Swiper>
+            </div>
+          </div>
+
+          {/* Buttons Section */}
+          <div className="flex flex-col mt-auto space-y-4 sm:flex-row sm:items-center sm:gap-4 sm:space-y-0">
+            {/* View Live Button */}
+            <a
+              href={project.liveLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              onMouseEnter={() => setHoveredLive(true)}
+              onMouseLeave={() => setHoveredLive(false)}
+              className="relative flex items-center gap-3 px-6 py-2 text-base font-bold text-white transition duration-300 ease-in-out "
+            >
+              <Eye
+                size={20}
+                className={`transition-all duration-300 ${
+                  hoveredLive
+                    ? "opacity-100 -translate-x-1"
+                    : "opacity-0 translate-x-2"
+                }`}
+              />
+              View Live
+              <ExternalLink
+                size={20}
+                className={`transition-all duration-300 ${
+                  hoveredLive
+                    ? "opacity-0 translate-x-2"
+                    : "opacity-100 -translate-x-1"
+                }`}
+              />
+            </a>
+
+            {/* Source Code Button */}
+            <a
+              href={project.sourceCode}
+              target="_blank"
+              rel="noopener noreferrer"
+              onMouseEnter={() => setHoveredSourceCode(true)}
+              onMouseLeave={() => setHoveredSourceCode(false)}
+              className="relative flex items-center gap-3 px-6 py-2 text-base font-bold text-white transition duration-300 ease-in-out "
+            >
+              <Code
+                size={20}
+                className={`transition-all duration-300 ${
+                  hoveredSourceCode
+                    ? "opacity-100 -translate-x-1"
+                    : "opacity-0 translate-x-2"
+                }`}
+              />
+              View Source Code
+              <ExternalLink
+                size={20}
+                className={`transition-all duration-300 ${
+                  hoveredSourceCode
+                    ? "opacity-0 translate-x-2"
+                    : "opacity-100 -translate-x-1"
+                }`}
+              />
+            </a>
+          </div>
+        </div>
+
+        {/* Right - Image */}
+        <div className="relative w-full h-56 overflow-hidden sm:h-64 md:w-1/3 md:h-full">
+          <img
+            src={project.image}
+            alt="Project Thumbnail"
+            className="object-cover w-full h-full transition-transform duration-500 transform rounded-lg hover:scale-105"
+          />
+        </div>
+      </div>
+    </SwiperSlide>
+  ))}
+</Swiper>
+
 
             {/* Navigation Arrows */}
             <div className="flex justify-center mt-8 space-x-4">
