@@ -21,7 +21,7 @@ import javascript from "./images/javascript.png";
 import nodejs from "./images/nodejs.png";
 import canva from "./images/canva.png";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, EffectFade } from "swiper/modules";
+import {EffectFade } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
