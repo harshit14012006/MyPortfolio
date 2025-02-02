@@ -141,7 +141,7 @@ const App = () => {
 
           <div className="flex justify-center gap-6 mt-12 text-indigo-400">
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/harshit14012006"
               target="_blank"
               rel="noopener noreferrer"
               className="transition duration-300 ease-in-out hover:text-indigo-300"
@@ -157,12 +157,12 @@ const App = () => {
               <i className="text-2xl fab fa-linkedin"></i>
             </a>
             <a
-              href="https://twitter.com/yourusername"
+              href="https://instagram.com/h2rshit"
               target="_blank"
               rel="noopener noreferrer"
               className="transition duration-300 ease-in-out hover:text-indigo-300"
             >
-              <i className="text-2xl fab fa-twitter"></i>
+              <i className="text-2xl fab fa-instagram"></i>
             </a>
           </div>
 
