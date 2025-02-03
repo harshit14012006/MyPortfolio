@@ -249,19 +249,17 @@ const App = () => {
           </div>
 
           <div className="flex items-center justify-center mt-16">
-  <div className="grid grid-cols-4 gap-8 md:grid-cols-2">
-    <div className="text-center">
-      <p className="text-4xl font-bold text-indigo-400">3</p>
-      <p className="text-sm text-gray-400">Projects Completed</p>
-    </div>
-    <div className="text-center">
-      <p className="text-4xl font-bold text-indigo-400">7</p>
-      <p className="text-sm text-gray-400">Months of Experience</p>
-    </div>
-  </div>
-</div>
-
-
+            <div className="grid grid-cols-4 gap-8 md:grid-cols-2">
+              <div className="text-center">
+                <p className="text-4xl font-bold text-indigo-400">3</p>
+                <p className="text-sm text-gray-400">Projects Completed</p>
+              </div>
+              <div className="text-center">
+                <p className="text-4xl font-bold text-indigo-400">7</p>
+                <p className="text-sm text-gray-400">Months of Experience</p>
+              </div>
+            </div>
+          </div>
         </header>
 
         {/* SKILLS Section */}
@@ -496,8 +494,9 @@ const App = () => {
 
         {/* Testimonial Section */}
         <section
-        id="testimonial"
-         className="bg-gradient-to-b from-gray-800 to-gray-900">
+          id="testimonial"
+          className="bg-gradient-to-b from-gray-800 to-gray-900"
+        >
           <div className="mx-auto max-w-[1340px] px-4 sm:px-6 lg:me-0 lg:py-16 lg:ps-8 lg:pe-0 xl:py-24">
             <div className="items-end justify-between max-w-7xl sm:flex sm:pe-6 lg:pe-8">
               <h2 className="max-w-xl text-3xl font-bold tracking-tight text-center text-indigo-400 sm:text-4xl md:text-5xl lg:text-4xl sm:mt-10">
