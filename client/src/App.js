@@ -336,7 +336,7 @@ const App = () => {
         {/* PROJECTS Section */}
         <section
           id="projects"
-          className="px-6 py-3 bg-gradient-to-b from-gray-900 to-gray-800"
+          className="px-6 py-24 bg-gradient-to-b from-gray-900 to-gray-800 lg:py-6"
         >
           <div className="max-w-6xl mx-auto">
             <h2 className="mb-10 text-4xl font-bold text-center text-indigo-400">
@@ -494,7 +494,7 @@ const App = () => {
         <section className="bg-gradient-to-b from-gray-800 to-gray-900">
           <div className="mx-auto max-w-[1340px] px-4 sm:px-6 lg:me-0 lg:py-16 lg:ps-8 lg:pe-0 xl:py-24">
             <div className="items-end justify-between max-w-7xl sm:flex sm:pe-6 lg:pe-8">
-              <h2 className="max-w-xl font-bold tracking-tight text-center text-indigo-400 sm:text-4xl">
+              <h2 className="max-w-xl text-3xl font-bold tracking-tight text-center text-indigo-400 sm:text-4xl md:text-5xl lg:text-4xl sm:mt-10">
                 What Tech Experts Say
               </h2>
 
