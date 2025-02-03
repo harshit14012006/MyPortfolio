@@ -475,13 +475,13 @@ const App = () => {
             <div className="flex justify-center mt-8 space-x-4">
               <button
                 onClick={() => swiperRef.current.swiper.slidePrev()}
-                className="p-4 text-white transition-all duration-500 bg-gray-700 rounded-full shadow-md hover:bg-gray-600"
+                className="p-3 transition border rounded-full border-rose-400 text-rose-400 hover:bg-rose-500 hover:text-white"
               >
                 <ChevronLeft size={24} />
               </button>
               <button
                 onClick={() => swiperRef.current.swiper.slideNext()}
-                className="p-4 text-white transition-all duration-500 bg-gray-700 rounded-full shadow-md hover:bg-gray-600"
+                className="p-3 transition border rounded-full border-rose-400 text-rose-400 hover:bg-rose-500 hover:text-white"
               >
                 <ChevronRight size={24} />
               </button>
@@ -491,9 +491,9 @@ const App = () => {
 
         {/* Testimonial Section */}
         <section className="bg-gradient-to-b from-gray-800 to-gray-900">
-          <div className="mx-auto max-w-[1340px] px-4  sm:px-6 lg:me-0 lg:py-16 lg:ps-8 lg:pe-0 xl:py-24">
+          <div className="mx-auto max-w-[1340px] px-4 sm:px-6 lg:me-0 lg:py-16 lg:ps-8 lg:pe-0 xl:py-24">
             <div className="items-end justify-between max-w-7xl sm:flex sm:pe-6 lg:pe-8">
-              <h2 className="max-w-xl text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+              <h2 className="max-w-xl font-bold tracking-tight text-center text-indigo-400 sm:text-4xl">
                 What Tech Experts Say
               </h2>
 
@@ -501,7 +501,7 @@ const App = () => {
                 <button
                   aria-label="Previous slide"
                   id="keen-slider-previous"
-                  className="p-3 transition border rounded-full border-rose-600 text-rose-600 hover:bg-rose-600 hover:text-white"
+                  className="p-3 transition border rounded-full border-rose-400 text-rose-400 hover:bg-rose-500 hover:text-white"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -522,7 +522,7 @@ const App = () => {
                 <button
                   aria-label="Next slide"
                   id="keen-slider-next"
-                  className="p-3 transition border rounded-full border-rose-600 text-rose-600 hover:bg-rose-600 hover:text-white"
+                  className="p-3 transition border rounded-full border-rose-400 text-rose-400 hover:bg-rose-500 hover:text-white"
                 >
                   <svg
                     className="size-5 rtl:rotate-180"
@@ -546,8 +546,8 @@ const App = () => {
               <div id="keen-slider" className="keen-slider">
                 {testimonials.map((testimonial, index) => (
                   <div key={index} className="keen-slider__slide">
-                    <blockquote className="flex flex-col justify-between h-full p-6 bg-white shadow-xs sm:p-8 lg:p-12">
-                      <p className="text-lg font-medium text-gray-900">
+                    <blockquote className="flex flex-col justify-between h-full p-6 rounded-lg shadow-md bg-gray-800/90 sm:p-8 lg:p-12">
+                      <p className="text-lg font-medium text-gray-200">
                         "{testimonial.quote}"
                       </p>
 
@@ -557,11 +557,15 @@ const App = () => {
                           <svg
                             key={i}
                             xmlns="http://www.w3.org/2000/svg"
-                            fill={i < testimonial.rating ? "gold" : "gray"}
+                            fill={i < testimonial.rating ? "yellow" : "gray"}
                             viewBox="0 0 24 24"
                             strokeWidth="1.5"
                             stroke="currentColor"
-                            className="w-5 h-5"
+                            className={`w-5 h-5 ${
+                              i < testimonial.rating
+                                ? "text-yellow-400"
+                                : "text-gray-500"
+                            }`}
                           >
                             <path
                               strokeLinecap="round"
@@ -572,7 +576,7 @@ const App = () => {
                         ))}
                       </div>
 
-                      <cite className="mt-4 text-sm font-semibold text-gray-700">
+                      <cite className="mt-4 text-sm font-semibold text-gray-300">
                         – {testimonial.author}, {testimonial.role}
                       </cite>
                     </blockquote>
