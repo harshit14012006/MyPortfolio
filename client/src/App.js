@@ -135,7 +135,7 @@ const App = () => {
             { href: "#home", icon: "fa-home", label: "Home" },
             { href: "#skills", icon: "fa-cogs", label: "Skills" },
             { href: "#projects", icon: "fa-briefcase", label: "Projects" },
-            { href: "#contact", icon: "fa-envelope", label: "Contact" },
+            { href: "#testimonial", icon: "fa-quote-left", label: "Testimonial" },
           ].map((item, index) => (
             <li key={index} className="text-center">
               <a
@@ -150,32 +150,31 @@ const App = () => {
         </ul>
       </nav>
 
-      {/* Sidebar for Desktop and Mobile Navbar */}
+      {/* Sidebar for Desktop */}
       <nav
-        className={`fixed top-0 left-0 h-full w-64 bg-gray-800 flex flex-col items-center py-8 shadow-lg transform transition-transform duration-300 ease-in-out ${
-          isNavOpen ? "translate-x-0" : "-translate-x-full"
-        } md:translate-x-0 md:w-20 z-40`}
-      >
-        {[
-          { href: "#home", icon: "fa-home", label: "HOME" },
-          { href: "#skills", icon: "fa-cogs", label: "SKILLS" },
-          { href: "#projects", icon: "fa-briefcase", label: "PROJECTS" },
-          { href: "#contact", icon: "fa-envelope", label: "CONTACT" },
-        ].map((item, index) => (
-          <a
-            key={index}
-            href={item.href}
-            className="w-full p-2 mb-6 text-center transition rounded-md hover:bg-gray-700"
-            onClick={() => setIsNavOpen(false)} // Close navbar on link click
-          >
-            <i
-              className={`fa ${item.icon} text-xl mb-1`}
-              aria-hidden="true"
-            ></i>
-            <p className="text-xs">{item.label}</p>
-          </a>
-        ))}
-      </nav>
+  className={`fixed top-0 left-0 h-full w-72 bg-gray-800 flex flex-col items-center justify-center py-8 shadow-lg transform transition-transform duration-300 ease-in-out ${
+    isNavOpen ? "translate-x-0" : "-translate-x-full"
+  } md:translate-x-0 md:w-20 z-40`}
+>
+  {[
+    { href: "#home", icon: "fa-home", label: "HOME" },
+    { href: "#skills", icon: "fa-cogs", label: "SKILLS" },
+    { href: "#projects", icon: "fa-briefcase", label: "PROJECTS" },
+    { href: "#testimonial", icon: "fa-quote-left", label: "TESTIMONIALS" },
+  ].map((item, index) => (
+    <a
+      key={index}
+      href={item.href}
+      className="flex flex-col items-center w-full p-2 mb-6 text-center transition rounded-md hover:bg-gray-700"
+      onClick={() => setIsNavOpen(false)} // Close navbar on link click
+    >
+      <i className={`fa ${item.icon} text-xl mb-1`} aria-hidden="true"></i>
+      <p className="text-[10px]">{item.label}</p>
+
+    </a>
+  ))}
+</nav>
+
 
       {/* Main Content */}
       <div className="md:ml-20">
