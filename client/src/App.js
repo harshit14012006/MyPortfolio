@@ -5,6 +5,7 @@ import {
   Eye,
   ExternalLink,
   Code,
+  Star,
 } from "lucide-react";
 import clang from "./images/clang.png";
 import cpluslang from "./images/cpluslang.png";
@@ -554,25 +555,15 @@ const App = () => {
                       {/* Star Ratings */}
                       <div className="flex mt-3">
                         {[...Array(5)].map((_, i) => (
-                          <svg
+                          <Star
                             key={i}
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill={i < testimonial.rating ? "yellow" : "gray"}
-                            viewBox="0 0 24 24"
-                            strokeWidth="1.5"
-                            stroke="currentColor"
+                            fill={i < testimonial.rating ? "yellow" : "gray"} // Change color to yellow for filled stars
                             className={`w-5 h-5 ${
                               i < testimonial.rating
                                 ? "text-yellow-400"
                                 : "text-gray-500"
                             }`}
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l2.198 6.8a1 1 0 00.95.69h7.146c.97 0 1.372 1.24.588 1.81l-5.787 4.276a1 1 0 00-.364 1.118l2.198 6.8c.3.921-.755 1.688-1.54 1.118l-5.787-4.276a1 1 0 00-1.176 0l-5.787 4.276c-.785.57-1.84-.197-1.54-1.118l2.198-6.8a1 1 0 00-.364-1.118L2.167 12.23c-.784-.57-.382-1.81.588-1.81h7.146a1 1 0 00.95-.69l2.198-6.8z"
-                            />
-                          </svg>
+                          />
                         ))}
                       </div>
 
