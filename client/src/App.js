@@ -135,7 +135,11 @@ const App = () => {
             { href: "#home", icon: "fa-home", label: "Home" },
             { href: "#skills", icon: "fa-cogs", label: "Skills" },
             { href: "#projects", icon: "fa-briefcase", label: "Projects" },
-            { href: "#testimonial", icon: "fa-quote-left", label: "Testimonial" },
+            {
+              href: "#testimonial",
+              icon: "fa-quote-left",
+              label: "Testimonial",
+            },
           ].map((item, index) => (
             <li key={index} className="text-center">
               <a
@@ -152,29 +156,34 @@ const App = () => {
 
       {/* Sidebar for Desktop */}
       <nav
-  className={`fixed top-0 left-0 h-full w-72 bg-gray-800 flex flex-col items-center justify-center py-8 shadow-lg transform transition-transform duration-300 ease-in-out ${
-    isNavOpen ? "translate-x-0" : "-translate-x-full"
-  } md:translate-x-0 md:w-20 z-40`}
->
-  {[
-    { href: "#home", icon: "fa-home", label: "HOME" },
-    { href: "#skills", icon: "fa-cogs", label: "SKILLS" },
-    { href: "#projects", icon: "fa-briefcase", label: "PROJECTS" },
-    { href: "#testimonial", icon: "fa-quote-left", label: "TESTIMONIALS" },
-  ].map((item, index) => (
-    <a
-      key={index}
-      href={item.href}
-      className="flex flex-col items-center w-full p-2 mb-6 text-center transition rounded-md hover:bg-gray-700"
-      onClick={() => setIsNavOpen(false)} // Close navbar on link click
-    >
-      <i className={`fa ${item.icon} text-xl mb-1`} aria-hidden="true"></i>
-      <p className="text-[10px]">{item.label}</p>
-
-    </a>
-  ))}
-</nav>
-
+        className={`fixed top-0 left-0 h-full w-72 bg-gray-800 flex flex-col items-center justify-center py-8 shadow-lg transform transition-transform duration-300 ease-in-out ${
+          isNavOpen ? "translate-x-0" : "-translate-x-full"
+        } md:translate-x-0 md:w-20 z-40`}
+      >
+        {[
+          { href: "#home", icon: "fa-home", label: "HOME" },
+          { href: "#skills", icon: "fa-cogs", label: "SKILLS" },
+          { href: "#projects", icon: "fa-briefcase", label: "PROJECTS" },
+          {
+            href: "#testimonial",
+            icon: "fa-quote-left",
+            label: "TESTIMONIALS",
+          },
+        ].map((item, index) => (
+          <a
+            key={index}
+            href={item.href}
+            className="flex flex-col items-center w-full p-2 mb-6 text-center transition rounded-md hover:bg-gray-700"
+            onClick={() => setIsNavOpen(false)} // Close navbar on link click
+          >
+            <i
+              className={`fa ${item.icon} text-xl mb-1`}
+              aria-hidden="true"
+            ></i>
+            <p className="text-[10px]">{item.label}</p>
+          </a>
+        ))}
+      </nav>
 
       {/* Main Content */}
       <div className="md:ml-20">
@@ -205,7 +214,7 @@ const App = () => {
               View Projects
             </a>
             <a
-              href="#contact"
+              href="#contatestct"
               className="px-8 py-3 text-sm font-semibold text-indigo-600 transition duration-300 ease-in-out border border-indigo-600 rounded-full shadow-lg hover:bg-indigo-600 hover:text-white"
             >
               Contact Me
@@ -239,24 +248,20 @@ const App = () => {
             </a>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 mt-16 md:grid-cols-4">
-            <div className="text-center">
-              <p className="text-4xl font-bold text-indigo-400">3</p>
-              <p className="text-sm text-gray-400">Projects Completed</p>
-            </div>
-            <div className="text-center">
-              <p className="text-4xl font-bold text-indigo-400">5+</p>
-              <p className="text-sm text-gray-400">Years of Experience</p>
-            </div>
-            <div className="text-center">
-              <p className="text-4xl font-bold text-indigo-400">10+</p>
-              <p className="text-sm text-gray-400">Happy Clients</p>
-            </div>
-            <div className="text-center">
-              <p className="text-4xl font-bold text-indigo-400">100%</p>
-              <p className="text-sm text-gray-400">Satisfaction</p>
-            </div>
-          </div>
+          <div className="flex items-center justify-center mt-16">
+  <div className="grid grid-cols-4 gap-8 md:grid-cols-2">
+    <div className="text-center">
+      <p className="text-4xl font-bold text-indigo-400">3</p>
+      <p className="text-sm text-gray-400">Projects Completed</p>
+    </div>
+    <div className="text-center">
+      <p className="text-4xl font-bold text-indigo-400">7</p>
+      <p className="text-sm text-gray-400">Months of Experience</p>
+    </div>
+  </div>
+</div>
+
+
         </header>
 
         {/* SKILLS Section */}
@@ -490,7 +495,9 @@ const App = () => {
         </section>
 
         {/* Testimonial Section */}
-        <section className="bg-gradient-to-b from-gray-800 to-gray-900">
+        <section
+        id="testimonial"
+         className="bg-gradient-to-b from-gray-800 to-gray-900">
           <div className="mx-auto max-w-[1340px] px-4 sm:px-6 lg:me-0 lg:py-16 lg:ps-8 lg:pe-0 xl:py-24">
             <div className="items-end justify-between max-w-7xl sm:flex sm:pe-6 lg:pe-8">
               <h2 className="max-w-xl text-3xl font-bold tracking-tight text-center text-indigo-400 sm:text-4xl md:text-5xl lg:text-4xl sm:mt-10">
