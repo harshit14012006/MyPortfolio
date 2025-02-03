@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   ChevronLeft,
   ChevronRight,
@@ -28,7 +28,77 @@ import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import realEstateImage from "./images/realestateimg.png";
 import shrisatyaitimg from "./images/shrisatyaitimg.png";
+import KeenSlider from "keen-slider";
+import "keen-slider/keen-slider.min.css";
+
+const testimonials = [
+  {
+    quote:
+      "The React-based UI is incredibly smooth, and the performance is top-notch. I love how scalable it is!",
+    author: "Sarah Thompson",
+    role: "Frontend Developer",
+    rating: 5,
+  },
+  {
+    quote:
+      "Integrating Node.js and Express with this framework has been seamless. The backend runs efficiently!",
+    author: "Michael Johnson",
+    role: "Backend Engineer",
+    rating: 4,
+  },
+  {
+    quote:
+      "As a DevOps engineer, I appreciate the ease of deployment. The system is well-optimized for CI/CD.",
+    author: "Emily Carter",
+    role: "DevOps Engineer",
+    rating: 5,
+  },
+  {
+    quote:
+      "The real-time data processing capabilities with WebSockets are impressive. A great tool for modern web apps!",
+    author: "David Kim",
+    role: "Full-Stack Developer",
+    rating: 4,
+  },
+  {
+    quote:
+      "The modularity and component-based structure make development fast and efficient. Highly recommended!",
+    author: "Lisa Rodriguez",
+    role: "Software Architect",
+    rating: 5,
+  },
+];
+
 const App = () => {
+  useEffect(() => {
+    const keenSlider = new KeenSlider("#keen-slider", {
+      loop: true,
+      slides: {
+        origin: "center",
+        perView: 1.25,
+        spacing: 16,
+      },
+      breakpoints: {
+        "(min-width: 1024px)": {
+          slides: {
+            origin: "auto",
+            perView: 2.5,
+            spacing: 32,
+          },
+        },
+      },
+    });
+
+    document
+      .getElementById("keen-slider-previous")
+      .addEventListener("click", () => keenSlider.prev());
+    document
+      .getElementById("keen-slider-next")
+      .addEventListener("click", () => keenSlider.next());
+
+    return () => keenSlider.destroy();
+  }, []);
+
   const [isNavOpen, setIsNavOpen] = useState(false); // State to toggle navbar visibility
   const swiperRef = useRef(null);
   const [hoveredLive, setHoveredLive] = useState(false);
@@ -265,7 +335,7 @@ const App = () => {
         {/* PROJECTS Section */}
         <section
           id="projects"
-          className="px-6 py-20 bg-gradient-to-b from-gray-900 to-gray-800"
+          className="px-6 py-3 bg-gradient-to-b from-gray-900 to-gray-800"
         >
           <div className="max-w-6xl mx-auto">
             <h2 className="mb-10 text-4xl font-bold text-center text-indigo-400">
@@ -274,120 +344,132 @@ const App = () => {
 
             {/* Swiper Carousel */}
             <Swiper
-  ref={swiperRef}
-  modules={[EffectFade]}
-  spaceBetween={30}
-  slidesPerView={1}
-  autoplay={{ delay: 3500, disableOnInteraction: false }}
-  effect="fade"
-  speed={800}
-  className="w-full transition-all duration-700 ease-in-out"
->
-  {projects.map((project, index) => (
-    <SwiperSlide key={index} className="relative swiper-slide">
-      <div className="flex flex-col items-center overflow-hidden rounded-lg shadow-xl transform transition-transform duration-300 md:flex-row h-auto sm:h-[500px] md:h-[350px]">
-        {/* Left Side - Content */}
-        <div className="flex flex-col justify-between h-full p-6 mr-10 space-y-6 bg-gray-800 rounded-xl sm:p-8 sm:w-full md:w-2/3">
-          {/* Project Title */}
-          <h3 className="text-2xl font-bold text-white sm:text-3xl">
-            {project.title}
-          </h3>
+              ref={swiperRef}
+              modules={[EffectFade]}
+              spaceBetween={30}
+              slidesPerView={1}
+              autoplay={{ delay: 3500, disableOnInteraction: false }}
+              effect="fade"
+              speed={800}
+              className="w-full transition-all duration-700 ease-in-out"
+            >
+              {projects.map((project, index) => (
+                <SwiperSlide key={index} className="relative swiper-slide">
+                  <div className="flex flex-col items-center overflow-hidden rounded-lg shadow-xl transform transition-transform duration-300 md:flex-row h-auto sm:h-[500px] md:h-[350px]">
+                    {/* Left Side - Content */}
+                    <div className="flex flex-col justify-between h-full p-6 space-y-6 bg-gray-800 rounded-xl sm:p-8 sm:w-full md:w-1/2">
+                      {/* Project Title */}
+                      <h3 className="text-2xl font-bold text-white sm:text-3xl">
+                        {project.title}
+                      </h3>
 
-          {/* Description */}
-          <p className="text-sm leading-relaxed text-gray-300 sm:text-base">
-            {project.description}
-          </p>
+                      {/* Description */}
+                      <p className="text-sm leading-relaxed text-gray-300 sm:text-base">
+                        {project.description}
+                      </p>
 
-          {/* Skills Used Section */}
-          <div>
-            <h4 className="text-lg font-semibold text-indigo-400">
-              Skills Used:
-            </h4>
-            <div className="flex flex-wrap gap-2 mt-3">
-              {project.skills.map((skill, index) => (
-                <span
-                  key={index}
-                  className="px-4 py-2 text-sm font-semibold text-gray-800 bg-gray-300 rounded-lg"
-                >
-                  {skill}
-                </span>
+                      {/* Skills Used Section */}
+                      <div>
+                        <h4 className="text-lg font-semibold text-indigo-400">
+                          Skills Used:
+                        </h4>
+                        <div className="flex flex-wrap gap-2 mt-3">
+                          {project.skills.map((skill, index) => {
+                            // Assign different colors based on index
+                            const bgColors = [
+                              "bg-blue-500 text-white",
+                              "bg-green-500 text-white",
+                              "bg-indigo-500 text-white",
+                              "bg-yellow-500 text-gray-900",
+                              "bg-teal-500 text-white",
+                            ];
+                            const bgColorClass =
+                              bgColors[index % bgColors.length]; // Cycle through colors
+
+                            return (
+                              <span
+                                key={index}
+                                className={`px-3 py-1.5 text-sm font-medium rounded-md shadow-md ${bgColorClass}`}
+                              >
+                                {skill}
+                              </span>
+                            );
+                          })}
+                        </div>
+                      </div>
+
+                      {/* Buttons Section */}
+                      <div className="flex flex-col gap-4 mt-auto sm:flex-row sm:items-center sm:justify-start">
+                        {/* View Live Button */}
+                        <a
+                          href={project.liveLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onMouseEnter={() => setHoveredLive(true)}
+                          onMouseLeave={() => setHoveredLive(false)}
+                          className="flex items-center gap-3 px-6 py-3 text-base font-bold text-white transition-all duration-300"
+                        >
+                          <Eye
+                            size={20}
+                            className={`transition-all duration-300 ${
+                              hoveredLive
+                                ? "opacity-100 -translate-x-1"
+                                : "opacity-0 translate-x-2"
+                            }`}
+                          />
+                          View Live
+                          <ExternalLink
+                            size={20}
+                            className={`transition-all duration-300 ${
+                              hoveredLive
+                                ? "opacity-0 translate-x-2"
+                                : "opacity-100 -translate-x-1"
+                            }`}
+                          />
+                        </a>
+
+                        {/* Source Code Button */}
+                        <a
+                          href={project.sourceCode}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onMouseEnter={() => setHoveredSourceCode(true)}
+                          onMouseLeave={() => setHoveredSourceCode(false)}
+                          className="relative flex items-center gap-3 px-6 py-3 text-base font-bold text-white transition-all duration-300"
+                        >
+                          <Code
+                            size={20}
+                            className={`transition-all duration-300 ${
+                              hoveredSourceCode
+                                ? "opacity-100 -translate-x-1"
+                                : "opacity-0 translate-x-2"
+                            }`}
+                          />
+                          View Source Code
+                          <ExternalLink
+                            size={20}
+                            className={`transition-all duration-300 ${
+                              hoveredSourceCode
+                                ? "opacity-0 translate-x-2"
+                                : "opacity-100 -translate-x-1"
+                            }`}
+                          />
+                        </a>
+                      </div>
+                    </div>
+
+                    {/* Right - Image */}
+                    <div className="relative w-full h-56 overflow-hidden sm:h-64 md:w-1/2 md:h-full">
+                      <img
+                        src={project.image}
+                        alt="Project Thumbnail"
+                        className="object-fill w-full h-full transition-transform duration-500 transform rounded-lg hover:scale-105"
+                      />
+                    </div>
+                  </div>
+                </SwiperSlide>
               ))}
-            </div>
-          </div>
-
-          {/* Buttons Section */}
-          <div className="flex flex-col mt-auto space-y-4 sm:flex-row sm:items-center sm:gap-4 sm:space-y-0">
-            {/* View Live Button */}
-            <a
-              href={project.liveLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              onMouseEnter={() => setHoveredLive(true)}
-              onMouseLeave={() => setHoveredLive(false)}
-              className="relative flex items-center gap-3 px-6 py-2 text-base font-bold text-white transition duration-300 ease-in-out "
-            >
-              <Eye
-                size={20}
-                className={`transition-all duration-300 ${
-                  hoveredLive
-                    ? "opacity-100 -translate-x-1"
-                    : "opacity-0 translate-x-2"
-                }`}
-              />
-              View Live
-              <ExternalLink
-                size={20}
-                className={`transition-all duration-300 ${
-                  hoveredLive
-                    ? "opacity-0 translate-x-2"
-                    : "opacity-100 -translate-x-1"
-                }`}
-              />
-            </a>
-
-            {/* Source Code Button */}
-            <a
-              href={project.sourceCode}
-              target="_blank"
-              rel="noopener noreferrer"
-              onMouseEnter={() => setHoveredSourceCode(true)}
-              onMouseLeave={() => setHoveredSourceCode(false)}
-              className="relative flex items-center gap-3 px-6 py-2 text-base font-bold text-white transition duration-300 ease-in-out "
-            >
-              <Code
-                size={20}
-                className={`transition-all duration-300 ${
-                  hoveredSourceCode
-                    ? "opacity-100 -translate-x-1"
-                    : "opacity-0 translate-x-2"
-                }`}
-              />
-              View Source Code
-              <ExternalLink
-                size={20}
-                className={`transition-all duration-300 ${
-                  hoveredSourceCode
-                    ? "opacity-0 translate-x-2"
-                    : "opacity-100 -translate-x-1"
-                }`}
-              />
-            </a>
-          </div>
-        </div>
-
-        {/* Right - Image */}
-        <div className="relative w-full h-56 overflow-hidden sm:h-64 md:w-1/3 md:h-full">
-          <img
-            src={project.image}
-            alt="Project Thumbnail"
-            className="object-cover w-full h-full transition-transform duration-500 transform rounded-lg hover:scale-105"
-          />
-        </div>
-      </div>
-    </SwiperSlide>
-  ))}
-</Swiper>
-
+            </Swiper>
 
             {/* Navigation Arrows */}
             <div className="flex justify-center mt-8 space-x-4">
@@ -403,6 +485,100 @@ const App = () => {
               >
                 <ChevronRight size={24} />
               </button>
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonial Section */}
+        <section className="bg-gradient-to-b from-gray-800 to-gray-900">
+          <div className="mx-auto max-w-[1340px] px-4  sm:px-6 lg:me-0 lg:py-16 lg:ps-8 lg:pe-0 xl:py-24">
+            <div className="items-end justify-between max-w-7xl sm:flex sm:pe-6 lg:pe-8">
+              <h2 className="max-w-xl text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+                What Tech Experts Say
+              </h2>
+
+              <div className="flex gap-4 mt-8 lg:mt-0">
+                <button
+                  aria-label="Previous slide"
+                  id="keen-slider-previous"
+                  className="p-3 transition border rounded-full border-rose-600 text-rose-600 hover:bg-rose-600 hover:text-white"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    className="size-5 rtl:rotate-180"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M15.75 19.5L8.25 12l7.5-7.5"
+                    />
+                  </svg>
+                </button>
+
+                <button
+                  aria-label="Next slide"
+                  id="keen-slider-next"
+                  className="p-3 transition border rounded-full border-rose-600 text-rose-600 hover:bg-rose-600 hover:text-white"
+                >
+                  <svg
+                    className="size-5 rtl:rotate-180"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M9 5l7 7-7 7"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div className="mt-8 -mx-6 lg:col-span-2 lg:mx-0">
+              <div id="keen-slider" className="keen-slider">
+                {testimonials.map((testimonial, index) => (
+                  <div key={index} className="keen-slider__slide">
+                    <blockquote className="flex flex-col justify-between h-full p-6 bg-white shadow-xs sm:p-8 lg:p-12">
+                      <p className="text-lg font-medium text-gray-900">
+                        "{testimonial.quote}"
+                      </p>
+
+                      {/* Star Ratings */}
+                      <div className="flex mt-3">
+                        {[...Array(5)].map((_, i) => (
+                          <svg
+                            key={i}
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill={i < testimonial.rating ? "gold" : "gray"}
+                            viewBox="0 0 24 24"
+                            strokeWidth="1.5"
+                            stroke="currentColor"
+                            className="w-5 h-5"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l2.198 6.8a1 1 0 00.95.69h7.146c.97 0 1.372 1.24.588 1.81l-5.787 4.276a1 1 0 00-.364 1.118l2.198 6.8c.3.921-.755 1.688-1.54 1.118l-5.787-4.276a1 1 0 00-1.176 0l-5.787 4.276c-.785.57-1.84-.197-1.54-1.118l2.198-6.8a1 1 0 00-.364-1.118L2.167 12.23c-.784-.57-.382-1.81.588-1.81h7.146a1 1 0 00.95-.69l2.198-6.8z"
+                            />
+                          </svg>
+                        ))}
+                      </div>
+
+                      <cite className="mt-4 text-sm font-semibold text-gray-700">
+                        – {testimonial.author}, {testimonial.role}
+                      </cite>
+                    </blockquote>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
