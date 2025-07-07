@@ -194,7 +194,7 @@ const App = () => {
         >
           <div className="max-w-4xl space-y-6">
             <h1 className="text-5xl font-bold text-white md:text-6xl lg:text-7xl">
-              Hello, I'm <span className="text-indigo-400">Harshit Singla</span>
+              Hello, I'm <span className="text-indigo-400">Harshit Agrawal</span>
               .
             </h1>
             <p className="text-xl font-light text-gray-300 md:text-2xl">
