@@ -110,8 +110,8 @@ const App = () => {
       description:
         "Designed a web application to showcase property listings with detailed information and search filters, providing a user-friendly and responsive interface for easy property discovery.",
       image: realEstateImage,
-      liveLink: "realestatenetlify.netlify.app",
-      sourceCode: "https://github.com/harshit14012006/projectrealestate",
+      liveLink: "/",
+      sourceCode: "/",
       skills: ["React", "Node.js", "Tailwind CSS", "Express.js", "MongoDB"], // Skills Used
     },
     {
@@ -119,8 +119,8 @@ const App = () => {
       description:
         "Created an elegant portfolio website to showcase technology solutions and services, aimed at capturing client interest and leaving a lasting impression.",
       image: shrisatyaitimg,
-      liveLink: "https://shrisatyait.com/",
-      sourceCode: "https://github.com/harshit14012006/ItWebsiteLayoutStatic",
+      liveLink: "/",
+      sourceCode: "/",
       skills: ["React", "Tailwind CSS"], // Skills Used
     },
     // More projects...
@@ -223,7 +223,7 @@ const App = () => {
 
           <div className="flex justify-center gap-6 mt-12 text-indigo-400">
             <a
-              href="https://github.com/harshit14012006"
+              href="/"
               target="_blank"
               rel="noopener noreferrer"
               className="transition duration-300 ease-in-out hover:text-indigo-300"
@@ -231,7 +231,7 @@ const App = () => {
               <i className="text-2xl fab fa-github"></i>
             </a>
             <a
-              href="https://www.linkedin.com/in/harshit-singla-b91a6233a/"
+              href="/"
               target="_blank"
               rel="noopener noreferrer"
               className="transition duration-300 ease-in-out hover:text-indigo-300"
@@ -239,7 +239,7 @@ const App = () => {
               <i className="text-2xl fab fa-linkedin"></i>
             </a>
             <a
-              href="https://instagram.com/h2rshit"
+              href="/"
               target="_blank"
               rel="noopener noreferrer"
               className="transition duration-300 ease-in-out hover:text-indigo-300"
